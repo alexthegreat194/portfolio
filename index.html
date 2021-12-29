@@ -7,24 +7,35 @@
         <title>Alex Harlan</title>
 
         <script src="https://cdn.tailwindcss.com"></script>
+        
+        <style>
+            .spacer {
+                aspect-ratio: 1000/150;
+                width: 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+            }
+
+        </style>
     </head>
     <body class="min-h-screen bg-gray-900">
         
-        <div 
-            class="
+        <div class="
                 h-screen w-screen flex justify-center items-center
-                bg-pose bg-no-repeat bg-cover bg-center bg-blend-overlay bg-opacity-75 "
-                
+                bg-pose bg-no-repeat bg-cover bg-center bg-blend-overlay bg-opacity-75"q
             style="background-image: url('Assets/Background-transperent.png');">
-            <div class="">
-                <h1 class="text-center text-gray-50">Hi, I'm Alex Harlan</h1>
-                <h5 class="text-center text-gray-50">I build and design web applications</h5>
+            <div class="flex flex-col items-center gap-5" >
+                <h1 class="text-center text-gray-50 font-bold text-8xl">Hi, I'm <span class="text-red-700">Alex Harlan</span></h1>
+                <h5 class="text-center text-gray-50 font-extralight text-3xl">I build and design web applications</h5>
                 <img class="object-cover w-[300px] h-[300px] rounded-full 
                 border-8 border-solid border-gray-900
                 " src="Assets/Profile.JPG" alt="profile">
             </div>
         </div>
 
+        <div class="spacer " 
+        style="background-image: url('Assets/layered-waves-haikei.svg');"></div>
 
     </body>
 </html>
