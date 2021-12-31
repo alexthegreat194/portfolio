@@ -77,32 +77,37 @@
             text-gray-50
             flex flex-col items-center gap-7">
 
-            <div>
+            <div class="flex flex-col items-center">
                 <h1 class="text-red-700 text-6xl font-bold">Contact me</h1>
-                <h3 class="text-2xl font-light">I'll get back to you as soon as I can</h3>
+                <h3 class="text-3xl font-light">I'll get back to you as soon as I can</h3>
             </div>
 
-            <form action="#" class="max-w-4xl">
+            <form action="#" class="
+                w-3/4
+                flex flex-col gap-7">
 
                 <div class="grid grid-cols-12 gap-7">
                     <div class="flex flex-col col-span-5">
                         <label for="email" class="font-extralight">Email</label>
-                        <input type="email" name="email" id="email" class="text-gray-900 bg-gray-100 text-2xl p-3">
+                        <input type="email" name="email" id="email" class="
+                        text-gray-900 bg-gray-100 text-2xl p-3 shadow-inner">
                     </div>
     
-                    <div class="lex flex-col col-span-7">
+                    <div class="flex flex-col col-span-7">
                         <label for="subject" class="font-extralight">Subject</label>
-                        <input type="text" name="subject" id="subject" class="text-gray-900 bg-gray-100 text-2xl p-3">
+                        <input type="text" name="subject" id="subject" class="
+                        text-gray-900 bg-gray-100 text-2xl p-3 shadow-inner">
                     </div>
                 </div>
 
-                <div class="lex flex-col">
+                <div class="flex flex-col">
                     <label for="message" class="font-extralight">Message</label>
-                    <textarea id="message" name="message" rows="4" cols="50" class="text-gray-900 bg-gray-100 text-2xl p-3">
-                    </textarea>
+                    <textarea id="message" name="message" rows="4" cols="50" class="
+                    text-gray-900 bg-gray-100 text-2xl p-3 shadow-inner"></textarea>
                 </div>
 
-                <input type="submit" value="Submit" class="text-3xl font-medium bg-red-700 px-7 py-3 rounded-full mx-2">
+                <input type="submit" value="Submit" class="
+                text-3xl font-medium bg-red-700 px-7 py-3 rounded-full mx-2">
 
             </form>
 
