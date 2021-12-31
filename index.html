@@ -73,7 +73,7 @@
 
         <div class="spacer flex" style="background-image: url('Assets/layered-waves-haikei.svg');"></div>
 
-        <div class="m-auto w-min text-gray-50">
+        <div class="m-auto w-max text-gray-50">
 
             <div>
                 <h1 class="text-red-700 text-6xl font-bold">Contact me</h1>
@@ -82,14 +82,16 @@
 
             <form action="#">
 
-                <div class="grid grid-rows-2">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email">
-                </div>
-
-                <div class="grid grid-rows-2">
-                    <label for="subject">Subject</label>
-                    <input type="text" name="subject" id="subject">
+                <div class="grid grid-cols-12 gap-10">
+                    <div class="grid grid-rows-2 col-span-5">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email">
+                    </div>
+    
+                    <div class="grid grid-rows-2 col-span-7">
+                        <label for="subject">Subject</label>
+                        <input type="text" name="subject" id="subject">
+                    </div>
                 </div>
 
                 <div class="grid grid-rows-2">
