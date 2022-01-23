@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,11 +17,6 @@
             }
         </script>
 
-
-        <!-- Animate on scroll -->
-        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
         <style>
             .spacer {
                 aspect-ratio: 1000/150;
@@ -38,23 +33,39 @@
     </head>
     <body class="min-h-screen bg-gray-900 overscroll-none overflow-x-hidden">
         
+        <!-- Navbar -->
+        <div class="h-14 w-screen absolute top-0 bg-gray-900 text-gray-50
+            flex justify-between items-center
+            px-10
+        ">
+            <div class="h-full flex items-center font-bold text-2xl text-red-700">
+                <img src="Assets/Logo.png" alt="Logo" class="h-3/4">
+                <span class="px-5">Alex Harlan</span>
+            </div>
+            <nav class="font-bold text-xl text-gray-50">
+                <a href="#projects" class="px-10">Projects</a>
+                <a href="#contact" class="px-10">Contact</a>
+            </nav>
+        </div>
+
         <!-- Banner -->
         <div class="
                 h-screen w-screen flex justify-center items-center
                 bg-pose bg-no-repeat bg-cover bg-center bg-blend-overlay bg-opacity-75 bg-fixed"
-            style="background-image: url('Assets/Background-transperent.png');">
+            style="background-image: url('Assets/Background-transperent.png');"
+            id="banner">
             <div class="flex flex-col items-center gap-5" >
-                <h1 class="text-center text-gray-50 font-bold text-7xl" data-aos="zoom-out">Hi, I'm <span class="text-red-700">Alex Harlan</span></h1>
-                <h5 class="text-center text-gray-50 font-extralight text-2xl" data-aos="zoom-out">I build and design web applications</h5>
+                <h1 class="text-center text-gray-50 font-bold text-7xl" >Hi, I'm <span class="text-red-700">Alex Harlan</span></h1>
+                <h5 class="text-center text-gray-50 font-extralight text-2xl" >I build and design web applications</h5>
 
                 <img class="object-cover w-[250px] h-[250px] rounded-full 
-                border-8 border-solid border-gray-900" 
-                data-aos="zoom-in" 
+                border-8 border-solid border-gray-900"  
                 src="Assets/Profile.JPG" alt="profile">
             </div>
         </div>
-
+        
         <!-- Divider 1 -->
+        <div class="" id="projects"></div>
         <div class="spacer rotate-180 flex" style="background-image: url('Assets/layered-waves-haikei.svg');"></div>
 
         <!-- Portfolio -->
@@ -64,8 +75,7 @@
                 grid lg:grid-cols-10 sm:grid-cols-1 
                 mx-14
                 p-7
-                rounded-xl "
-                data-aos="zoom-in" >
+                rounded-xl ">
 
                 <div class="lg:col-span-4 sm:col-span-1 flex justify-center items-center">
                     <img src="Assets/music-enhancer.png" alt="music enhancer" class="h-56 aspect-auto">
@@ -92,8 +102,7 @@
             grid lg:grid-cols-10 sm:grid-cols-1 
                 mx-14
                 p-7
-                rounded-xl "
-                data-aos="zoom-in" >
+                rounded-xl ">
 
                 <div class="lg:col-span-4 sm:col-span-1 flex justify-center items-center">
                     <img src="Assets/homework-tracker.png" alt="homework tracker" class="h-56 aspect-auto">
@@ -128,7 +137,7 @@
             text-gray-50
             flex flex-col items-center gap-7
             m-25 mb-32"
-            data-aos="fade-up">
+            id="contact">
 
             <div class="flex flex-col items-center">
                 <h1 class="text-red-700 text-6xl font-bold">Contact me</h1>
@@ -168,10 +177,5 @@
             </form>
 
         </div>
-
-        <!-- Animate on Scroll -->
-        <script>
-            AOS.init();
-        </script>
     </body>
 </html>
