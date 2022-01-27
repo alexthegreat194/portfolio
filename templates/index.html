@@ -11,13 +11,13 @@
     
     <!-- Divider 1 -->
     <div class="" id="projects"></div>
-    <div class="spacer rotate-180 flex" style="background-image: url('Assets/layered-waves-haikei.svg');"></div>
+    <div class="spacer rotate-180 flex" style="background-image: url('{{url_for('static', filename='layered-waves-haikei.svg')}}');"></div>
 
     <!-- Projects -->
     {% include 'partials/projects.html' %}
 
     <!-- Divider 2 -->
-    <div class="spacer flex" style="background-image: url('Assets/layered-waves-haikei.svg');"></div>
+    <div class="spacer flex" style="background-image: url('{{url_for('static', filename='layered-waves-haikei.svg')}}');"></div>
 
     <!-- Form -->
     {% include 'partials/form.html' %}
