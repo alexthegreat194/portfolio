@@ -8,7 +8,7 @@
         rounded-xl ">
 
         <div class="lg:col-span-4 sm:col-span-1 flex justify-center items-center">
-            <img src="{{ url_for('static', filename='music-enhancer.png') }}" alt="music enhancer" class="h-48 aspect-auto">
+            <img src="/static/music-enhancer.png" alt="music enhancer" class="h-48 aspect-auto">
         </div>
         <div class="flex flex-col lg:col-span-6 sm:col-span-1">
             
@@ -35,7 +35,7 @@
         rounded-xl ">
 
         <div class="lg:col-span-4 sm:col-span-1 flex justify-center items-center">
-            <img src="{{url_for('static', filename='homework-tracker.png')}}" alt="homework tracker" class="h-48 aspect-auto">
+            <img src="/static/homework-tracker.png" alt="homework tracker" class="h-48 aspect-auto">
         </div>
         <div class="flex flex-col lg:col-span-6 sm:col-span-1">
             

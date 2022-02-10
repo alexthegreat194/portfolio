@@ -3,7 +3,7 @@
 flex justify-between items-center
 px-10">
     <div class="h-full flex items-center font-bold text-2xl text-red-700">
-        <img src="{{url_for('static', filename='Logo.png')}}" alt="Logo" class="h-3/4">
+        <img src="/Logo.png" alt="Logo" class="h-3/4">
         <span class="px-5">Alex Harlan</span>
     </div>
     <nav class="font-bold text-xl text-gray-50">
