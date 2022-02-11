@@ -6,9 +6,7 @@
     export let repo;
 </script>
 
-<div class=" bg-gray-900 text-gray-100
-        p-7
-        rounded-xl ">
+<div class=" bg-gray-900 text-gray-100 p-7 rounded-xl ">
     <div class="flex flex-col rounded-2xl">
         
         <h1 class="text-4xl font-semibold my-3 mx-7">{title} <span class="text-xs bg-red-700 rounded-lg p-1 align-middle">{tool}</span></h1>

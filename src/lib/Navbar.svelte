@@ -10,7 +10,7 @@ px-10">
         <img src="{logo}" alt="Logo" class="h-3/4">
         <span class="px-5">Alex Harlan</span>
     </div>
-    <nav class="font-bold text-xl text-gray-50">
+    <nav class="font-light text-xl text-gray-50">
         <a href="#projects" class="px-10">Projects</a>
         <a href="#contact" class="px-10">Contact</a>
     </nav>
