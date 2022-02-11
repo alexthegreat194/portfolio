@@ -3,7 +3,7 @@
 </script>
 
 <!-- Navbar -->
-<div class="h-14 w-screen absolute top-0 bg-gray-900 text-gray-50
+<div class="h-14 w-screen fixed z-10 top-0 bg-gray-900 text-gray-50
 flex justify-between items-center
 px-10">
     <div class="h-full flex items-center font-bold text-2xl text-red-700">

@@ -1,62 +1,27 @@
 <script>
-    import musicEnhancer from '$lib/assets/music-enhancer.png'
-    import homeworkTracker from '$lib/assets/homework-tracker.png'
+    import Project from './components/Project.svelte';
 </script>
 
  <!-- Projects -->
- <div class="bg-gray-800 flex flex-col items-center gap-20 overflow-hidden">
+ <div class="
+    bg-gray-800 items-center gap-20 px-20 overflow-hidden
+    grid grid-cols-2
+    ">
 
-    <div class=" bg-gray-900 text-gray-100 
-        grid lg:grid-cols-10 sm:grid-cols-1 
-        mx-14
-        p-7
-        rounded-xl ">
+    <Project 
+        title='Music Enhancer'
+        tool='html'
+        description='A site made to showcase a fake product that "amplifies" your music'
+        visit=''
+        repo=''
+    />
 
-        <div class="lg:col-span-4 sm:col-span-1 flex justify-center items-center">
-            <img src="{musicEnhancer}" alt="music enhancer" class="h-48 aspect-auto">
-        </div>
-        <div class="flex flex-col lg:col-span-6 sm:col-span-1">
-            
-            <h1 class="text-4xl font-semibold my-3 mx-7">Music Enhancer <span class="text-xs bg-red-700 rounded-lg p-1 align-middle">Html</span></h1>
-            <p class="text-xl mx-7 w-full font-extralight min-h-[5rem]">A site made to showcase a fake product that "amplifies" your music</p>
-            
-            <div class="m-4 flex flex-wrap gap-2">
-                <a class="
-                    text-2xl font-medium bg-red-700 px-7 py-3 rounded-full mx-2 border border-red-700
-                    hover:bg-gray-800 hover:text-red-700 hover:cursor-pointer transition-colors" href="#">Visit</a>
-                <a class="
-                text-2xl font-medium bg-gray-800 px-7 py-3 rounded-full border border-red-700 text-red-700 mx-2
-                hover:bg-red-700 hover:text-gray-50 hover:cursor-pointer transition-colors" href="#">Github Repo</a>
-            </div>
+    <Project 
+        title='Homework Tracker'
+        tool='html'
+        description='A place to keep track off all of your assignments and classes'
+        visit=''
+        repo=''
+    />
 
-        </div>
-
-    </div>
-
-    <div class=" bg-gray-900 text-gray-100 
-    grid lg:grid-cols-10 sm:grid-cols-1 
-        mx-14
-        p-7
-        rounded-xl ">
-
-        <div class="lg:col-span-4 sm:col-span-1 flex justify-center items-center">
-            <img src="{homeworkTracker}" alt="homework tracker" class="h-48 aspect-auto">
-        </div>
-        <div class="flex flex-col lg:col-span-6 sm:col-span-1">
-            
-            <h1 class="text-4xl my-3 mx-7">Homework Tracker <span class="text-xs bg-red-700 rounded-lg p-1 align-middle">Html</span></h1>
-            <p class="text-xl mx-7 w-full font-extralight min-h-[5rem]">A place to keep track off all of your assignments and classes</p>
-            
-            <div class="m-4 flex flex-wrap gap-2">
-                <a class="
-                    text-3xl font-medium bg-red-700 px-7 py-3 rounded-full mx-2 border border-red-700
-                    hover:bg-gray-800 hover:text-red-700 hover:cursor-pointer transition-colors" href="#">Visit</a>
-                <a class="
-                text-3xl font-medium bg-gray-800 px-7 py-3 rounded-full border border-red-700 text-red-700 mx-2
-                hover:bg-red-700 hover:text-gray-50 hover:cursor-pointer transition-colors" href="#">Github Repo</a>
-            </div>
-
-        </div>
-
-    </div>
 </div>
