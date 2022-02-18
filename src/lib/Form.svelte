@@ -1,4 +1,3 @@
-<!-- Form -->
 <div class="
 text-gray-50
 flex flex-col items-center gap-7
@@ -10,7 +9,7 @@ id="contact">
     <h3 class="text-2xl font-light">I'll get back to you as soon as I can</h3>
 </div>
 
-<form action="#" class="
+<form action="/api/contact" method="post" class="
     w-3/5
     flex flex-col gap-7">
 
