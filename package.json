@@ -18,6 +18,9 @@
   },
   "type": "module",
   "dependencies": {
-    "@sveltejs/adapter-node": "^1.0.0-next.68"
+    "@sveltejs/adapter-node": "^1.0.0-next.68",
+    "dotenv": "^16.0.0",
+    "mangodb": "^1.0.0",
+    "mongodb": "^4.4.0"
   }
 }
