@@ -9,22 +9,6 @@
     ">
 
     <Project 
-        title='Music Enhancer'
-        tool='html'
-        description='A site made to showcase a fake product that "amplifies" your music'
-        visit=''
-        repo=''
-    />
-
-    <Project 
-        title='Homework Tracker'
-        tool='html'
-        description='A place to keep track off all of your assignments and classes'
-        visit=''
-        repo=''
-    />
-
-    <Project 
         title='Actichat'
         tool='flask'
         description='A web application that allows for easy and quick conversations'
