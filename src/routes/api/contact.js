@@ -2,6 +2,7 @@ import clientPromise from "$lib/mongodb-client";
 
 export const post = async ({ request }) => {
     // database connection
+    console.log('Post Request')
     const connection = await clientPromise;
     const db = connection.db()
     const collection = db.collection('emails')
@@ -19,7 +20,7 @@ export const post = async ({ request }) => {
     console.log(newEmail);
 
     return {
-        status: 300,
+        status: 302,
         headers: {
             location: '/'
         }
