@@ -17,6 +17,7 @@ export const post = async ({ request }) => {
     const data = { email, subject, message }
     console.log(data)
 
+    // add to database
     const newEmail = await collection.insertOne(data)
     console.log(newEmail);
 

@@ -20,6 +20,7 @@
   "type": "module",
   "dependencies": {
     "@sveltejs/adapter-node": "^1.0.0-next.68",
+    "axios": "^0.26.0",
     "dotenv": "^16.0.0",
     "mangodb": "^1.0.0",
     "mongodb": "^4.4.0"
