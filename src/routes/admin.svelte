@@ -49,7 +49,7 @@
     
 
     {:else}
-        <div class=''>
+        <div class='overflow-auto'>
             {#each emails as email}
                 <Email 
                     subject={email.subject},
