@@ -8,7 +8,7 @@
 
 <Navbar />
 <Banner />
-<div class="spacer rotate-180 flex" style="background-image: url('{spacer}');"></div>
+<div id="projects" class="spacer rotate-180 flex" style="background-image: url('{spacer}');"></div>
 <Projects />
 <div class="spacer flex" style="background-image: url('{spacer}');"></div>
 <Form />
