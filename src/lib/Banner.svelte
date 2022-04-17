@@ -1,7 +1,8 @@
 <script>
     import background from '$lib/assets/Background-transperent.png'
-    import background2 from '$lib/assets/Background2-transparent.png'
     import profile from '$lib/assets/Profile.jpg'
+    
+    import background2 from '$lib/assets/Background2-transparent.png'
     import profile2 from '$lib/assets/Profile2.jpg'
 </script>
 
@@ -18,6 +19,6 @@
 
         <img class="object-cover w-[200px] h-[200px] rounded-full 
         border-8 border-solid border-gray-900"  
-        src="{profile2 }" alt="profile">
+        src="{profile2}" alt="profile">
     </div>
 </div>
