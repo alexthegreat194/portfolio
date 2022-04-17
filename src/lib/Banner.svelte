@@ -18,6 +18,6 @@
 
         <img class="object-cover w-[200px] h-[200px] rounded-full 
         border-8 border-solid border-gray-900"  
-        src="{profile2}" alt="profile">
+        src="{profile2 }" alt="profile">
     </div>
 </div>
