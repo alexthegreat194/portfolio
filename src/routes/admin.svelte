@@ -21,7 +21,7 @@
         .catch(error => console.log(error))
         .then(() => {
             
-            axios.post('/api/admin', { password })
+            axios.post('/api/admin', { password: 'password' })
             .then(response => {
                 console.log(response.data)
                 emails = response.data.emails
@@ -49,12 +49,14 @@
     
 
     {:else}
+        <div class='sticky top-0'>
+            <h1 class='text-gray-50'>Top Part</h1>
+        </div>
         <div class='overflow-auto'>
             {#each emails as email}
                 <Email 
-                    subject={email.subject},
-                    email={email.email},
-                    body={email.message}
+                    {...email}
+                    password=password
                 />
             {/each}
         </div>
