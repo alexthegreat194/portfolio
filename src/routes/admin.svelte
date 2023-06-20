@@ -21,7 +21,7 @@
         .catch(error => console.log(error))
         .then(() => {
             
-            axios.post('/api/admin', { password: 'password' })
+            axios.post('/api/admin', { password })
             .then(response => {
                 console.log(response.data)
                 emails = response.data.emails
