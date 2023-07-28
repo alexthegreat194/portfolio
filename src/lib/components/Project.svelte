@@ -16,7 +16,7 @@
             <span class="
                 text-xs 
                 bg-red-700 rounded-lg 
-                p-1 align-middle">
+                p-1 mx-1 align-middle">
                 {tool}
             </span>
         </h1>
