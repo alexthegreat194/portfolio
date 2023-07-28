@@ -9,9 +9,9 @@
 
     <Project 
         title='Actichat'
-        tool='flask'
-        description='A web application that allows for easy and quick conversations'
-        visit='https://actichat.herokuapp.com/'
+        tool='Python'
+        description='A chat app that allows users to create rooms and chat with each other. Users can send links to each other for easy access '
+        visit='https://actichat.onrender.com'
         repo='https://github.com/alexthegreat194/actichat'
     />
     
