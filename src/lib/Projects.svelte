@@ -9,10 +9,26 @@
 
     <Project 
         title='Actichat'
-        tool='Python'
+        tool='Flask'
         description='A chat app that allows users to create rooms and chat with each other. Users can send links to each other for easy access '
         visit='https://actichat.onrender.com'
         repo='https://github.com/alexthegreat194/actichat'
+    />
+
+    <Project 
+        title='Doink (in progress)'
+        tool='Express.js/React'
+        description='Doink! is a group management tool designed to assist friend groups in effectively managing their finances, recording social moments, and keeping track of shared shopping lists.'
+        visit='https://doink.otterlabs.co'
+        repo='https://github.com/noname-friend-app/friend-app-api'
+    />
+
+    <Project 
+        title='Social Prescribing'
+        tool='Express.js/React'
+        description='Refactored the backend to be more efficient and modular. With Social Prescribing, connect patients to personalized social services and local communities to enhance their holistic health.'
+        visit='https://social.eliaswambugu.com'
+        repo='https://github.com/noname-friend-app/friend-app-api'
     />
     
 </div>
