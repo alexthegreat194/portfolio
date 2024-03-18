@@ -1,6 +1,10 @@
 <script>
     import "../app.css";
     import logo from '$lib/assets/logo.png'
+    import { inject } from '@vercel/analytics'
+    import { dev } from '$app/env'
+
+    inject({ mode: dev ? 'development' : 'production' });
 </script>
 
 <svelte:head>
