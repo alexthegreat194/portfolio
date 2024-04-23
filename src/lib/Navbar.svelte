@@ -15,6 +15,6 @@ grid grid-cols-2">
     <nav class="font-light text-md sm:text-xl text-gray-50
         flex items-center justify-center gap-6">
         <a href="#projects" class="">Projects</a>
-        <a href="#contact" class="">Contact</a>
+        <a href="#contact" class="">Contacts</a>
     </nav>
 </div>
