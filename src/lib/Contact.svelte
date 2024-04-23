@@ -1,17 +1,6 @@
 <script>
     import { onMount } from 'svelte';
 
-    import redgithub from '$lib/assets/red-github.png';
-    import redlinkedin from '$lib/assets/red-linkedin.png';
-    import redgmail from '$lib/assets/red-gmail.png';
-    import whitegithub from '$lib/assets/white-github.png';
-    import whitelinkedin from '$lib/assets/white-linkedin.png';
-    import whitegmail from '$lib/assets/white-gmail.png';
-
-    let onGithib = false;
-    let onGmail = false;
-    let onLinkedin = false;
-
     let isMinus = false;
     let degit0 = 0;
     let degit1 = 0;

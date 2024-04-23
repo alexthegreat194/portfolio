@@ -1,6 +1,6 @@
 <script>
     import background from '$lib/assets/background2-transparent.png'
-    import profile from '$lib/assets/profile2.jpg'
+    import profile from '$lib/assets/profile3.jpg'
 </script>
 
 
