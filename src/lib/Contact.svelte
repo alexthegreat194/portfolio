@@ -98,6 +98,8 @@ id="contact">
         </a>
     </div>
 
+    <h1 class="text-3xl font-bold text-red-700">Or send me a message</h1>
+
     <form action="/api/contact" id="contact-form" method="post" on:submit={onSubmit} class="
         w-3/5
         flex flex-col gap-7">
