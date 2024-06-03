@@ -77,7 +77,7 @@ id="contact">
                 <h2 class="text-2xl font-bold">Linkedin</h2>
             </div>
         </a>
-        <a href="mailto:alexharlan@gmail.com" target="_blank">
+        <a href="mailto:alexharlan194@gmail.com" target="_blank">
             <div class="group flex justify-center items-center gap-4 shadow-xl border bg-gray-800 hover:bg-red-700 border-red-700 text-red-700 hover:text-red-50 py-10 px-16 sm:rounded-r-2xl">
                 <svg class="fill-red-700 group-hover:fill-red-50" width="30" height="30" viewBox="0 0 30 30" fill="#B91C1C" xmlns="http://www.w3.org/2000/svg">
                     <path d="M30 2.5V27.5C30 28.9167 29.1875 30 28.125 30H26.25V7.31167L15 18.0833L3.75 7.31167V30H1.875C0.81125 30 0 28.9167 0 27.5V2.5C0 1.79167 0.2025 1.16667 0.53875 0.72C0.875 0.266667 1.345 0 1.875 0H2.5L15 12.0833L27.5 0H28.125C28.6563 0 29.125 0.27 29.4613 0.72C29.7988 1.16667 30 1.79167 30 2.5Z"/>

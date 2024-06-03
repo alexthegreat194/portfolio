@@ -23,12 +23,12 @@
         repo='https://github.com/noname-friend-app/friend-app-api'
     />
 
-    <Project 
+    <!-- <Project 
         title='Social Prescribing'
         tool='Express.js/React'
         description='Refactored the backend to be more efficient and modular. With Social Prescribing, connect patients to personalized social services and local communities to enhance their holistic health.'
         visit='https://social.otterlabs.co'
         repo='https://github.com/dfmorse23/socialprescribing'
-    />
+    /> -->
     
 </div>
