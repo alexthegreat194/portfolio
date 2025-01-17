@@ -16,7 +16,7 @@
     />
 
     <Project 
-        title='Doink (in progress)'
+        title='Doink'
         tool='Express.js/React'
         description='Doink! is a group management tool designed to assist friend groups in effectively managing their finances, recording social moments, and keeping track of shared shopping lists.'
         visit='https://doink.otterlabs.co'
