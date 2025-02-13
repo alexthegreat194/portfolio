@@ -17,8 +17,15 @@
                 { 
                     api_host: 'https://us.i.posthog.com',
                     person_profiles: 'identified_only',
+                    capture_pageview: true // Enable automatic pageview tracking
                 }
             )
+            
+            // Capture initial page load
+            posthog.capture('page_view', {
+                path: window.location.pathname,
+                referrer: document.referrer
+            });
         }
         return
     });

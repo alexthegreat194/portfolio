@@ -1,5 +1,12 @@
 <script>
     import logo from '$lib/assets/logo.png'
+    import posthog from 'posthog-js'
+
+    const trackNavigation = (section) => {
+        posthog.capture('navigation_click', {
+            section: section
+        });
+    }
 </script>
 
 <!-- Navbar -->
@@ -14,7 +21,7 @@ grid grid-cols-2">
     </div>
     <nav class="font-light text-md sm:text-xl text-gray-50
         flex items-center justify-center gap-6">
-        <a href="#projects" class="">Projects</a>
-        <a href="#contact" class="">Contacts</a>
+        <a href="#projects" on:click={() => trackNavigation('projects')}>Projects</a>
+        <a href="#contact" on:click={() => trackNavigation('contacts')}>Contacts</a>
     </nav>
 </div>
