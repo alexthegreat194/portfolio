@@ -13,7 +13,7 @@
         // if we are localhost do not track
         if (typeof window != 'undefined' && window.location.hostname != 'localhost') {
             posthog.init(
-                import.meta.env.POSTHOG_KEY,
+                'phc_oEdgwsTfN4oWp96IqqkcrQkUDzYUf7tui3zvhOWYjYg',
                 { 
                     api_host: 'https://us.i.posthog.com',
                     person_profiles: 'identified_only',
