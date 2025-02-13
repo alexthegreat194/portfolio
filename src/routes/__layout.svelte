@@ -5,6 +5,23 @@
     import { dev } from '$app/env'
 
     inject({ mode: dev ? 'development' : 'production' });
+
+    import posthog from 'posthog-js'
+    import { onMount } from 'svelte';
+
+    onMount(() => {
+        // if we are localhost do not track
+        if (typeof window != 'undefined' && window.location.hostname != 'localhost') {
+            posthog.init(
+                import.meta.env.POSTHOG_KEY,
+                { 
+                    api_host: 'https://us.i.posthog.com',
+                    person_profiles: 'identified_only',
+                }
+            )
+        }
+        return
+    });
 </script>
 
 <svelte:head>

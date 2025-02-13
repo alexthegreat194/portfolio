@@ -27,6 +27,7 @@
     "axios": "^0.26.0",
     "dotenv": "^16.0.0",
     "mangodb": "^1.0.0",
-    "mongodb": "^4.4.0"
+    "mongodb": "^4.4.0",
+    "posthog-js": "^1.217.2"
   }
 }
