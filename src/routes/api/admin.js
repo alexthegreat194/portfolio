@@ -1,19 +1,18 @@
-
 import dotenv from 'dotenv';
 import clientPromise from '$lib/mongodb-client'
+import posthog from 'posthog-js'
 
 dotenv.config();
 
 export const get = async () => {
     console.log('Admin get..');
+    posthog.capture('admin_page_access_attempt');
     return {
         body: {
             msg: 'IT WORKED!'
         }
     }
 }
-
-
 
 export const post = async ({ request }) => {
     console.log('Admin post...');
@@ -23,6 +22,9 @@ export const post = async ({ request }) => {
     const correctPassword = process.env.ADMIN_PASSWORD
 
     if(password == null || password == undefined){
+        posthog.capture('admin_auth_error', {
+            reason: 'missing_password'
+        });
         console.log('Didnt finish')
         return {
             status: 400,
@@ -32,9 +34,14 @@ export const post = async ({ request }) => {
         }
     }
 
-    // console.log({password, correctPassword})
     let emails = [];
-    if (password == correctPassword) {
+    const authSuccess = password == correctPassword;
+    
+    posthog.capture('admin_auth_attempt', {
+        success: authSuccess
+    });
+
+    if (authSuccess) {
         // connect to database
         const connection = await clientPromise;
         const db = connection.db();
@@ -42,12 +49,15 @@ export const post = async ({ request }) => {
     
         let data = await collection.find({}).toArray();
         emails = data;
-        // console.log(data)
+        
+        posthog.capture('admin_emails_fetched', {
+            email_count: emails.length
+        });
     }
 
     return {
         body: {
-            success: password == correctPassword,
+            success: authSuccess,
             emails: emails
         }
     }
