@@ -22,10 +22,6 @@
             { scale: 1 },
             { ease: "circInOut", duration: 1, delay: 0.1 },
         );
-
-        // inView("#profile-image", (element) => {
-        //     animate(element, { opacity: 1 });
-        // });
     });
 </script>
 
