@@ -17,10 +17,35 @@
             { ease: "circInOut", duration: 1 },
         );
 
+        // Stagger animations for text elements
+        animate(
+            "#hi-text",
+            { opacity: 1, y: 0 },
+            { duration: 0.7, delay: 0.2 },
+        );
+
+        animate(
+            "#im-text",
+            { opacity: 1, y: 0 },
+            { duration: 0.7, delay: 0.4 },
+        );
+
+        animate(
+            "#name-text",
+            { opacity: 1, y: 0 },
+            { duration: 0.7, delay: 0.6 },
+        );
+
+        animate(
+            "#job-title",
+            { opacity: 1, y: 0 },
+            { duration: 0.7, delay: 0.8 },
+        );
+
         animate(
             "#profile-image",
             { scale: 1 },
-            { ease: "circInOut", duration: 1, delay: 0.1 },
+            { ease: "circInOut", duration: 1, delay: 1.1 },
         );
     });
 </script>
@@ -40,12 +65,21 @@
         <h1
             class="text-center text-gray-300 font-bold text-3xl sm:text-6xl m-1"
         >
-            Hi, I'm <span class="text-red-700 bg-gray-300 rounded-xl px-4"
+            <span id="hi-text" class="inline-block opacity-0 translate-y-4"
+                >Hi,</span
+            >
+            <span id="im-text" class="inline-block opacity-0 translate-y-4"
+                >I'm</span
+            >
+            <span
+                id="name-text"
+                class="text-red-700 bg-gray-300 rounded-xl px-4 inline-block opacity-0 translate-y-4"
                 >Alex Harlan</span
             >
         </h1>
         <h5
-            class="text-center text-gray-300 font-extralight text-md sm:text-xl"
+            id="job-title"
+            class="text-center text-gray-300 font-extralight text-md sm:text-xl opacity-0 translate-y-4"
         >
             Software Engineer
         </h5>
