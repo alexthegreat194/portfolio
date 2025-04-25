@@ -70,7 +70,8 @@
                 class="
                 text-xl sm:text-2xl font-medium bg-gray-800
                 px-6 py-2 sm:px-7 sm:py-3 rounded-full border border-red-700 text-red-700 mx-2
-                hover:bg-red-700 hover:text-gray-50 hover:cursor-pointer transition-colors"
+                hover:bg-red-700 hover:text-gray-50 hover:cursor-pointer transition-colors
+                {repo === '' ? 'hidden' : ''}"
                 href={repo}
                 target="_blank"
                 on:click={() => trackProjectClick("github", title)}

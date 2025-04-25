@@ -9,11 +9,11 @@
     grid lg:grid-cols-2 xs:grid-cols-1"
 >
     <Project
-        title="Actichat"
-        tool="Flask"
-        description="A chat app that allows users to create rooms and chat with each other. Users can send links to each other for easy access "
-        visit="https://actichat.onrender.com"
-        repo="https://github.com/alexthegreat194/actichat"
+        title="Forge PT"
+        tool="Webflow"
+        description="A Freelance project developed for Dr. Ming is a physical therapist. Though bringing you back to a healthy condition is important, his focus is bringing athletes back to a competitive level."
+        visit="https://www.ptforge.com/"
+        repo=""
     />
 
     <Project
@@ -22,6 +22,14 @@
         description="Doink! is a group management tool designed to assist friend groups in effectively managing their finances, recording social moments, and keeping track of shared shopping lists."
         visit="https://doink.otterlabs.co"
         repo="https://github.com/noname-friend-app/friend-app-api"
+    />
+
+    <Project
+        title="Actichat"
+        tool="Flask"
+        description="A chat app that allows users to create rooms and chat with each other. Users can send links to each other for easy access "
+        visit="https://actichat.onrender.com"
+        repo="https://github.com/alexthegreat194/actichat"
     />
 
     <!-- <Project
