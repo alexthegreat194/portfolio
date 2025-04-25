@@ -19,11 +19,7 @@
 
     onMount(() => {
         inView("#project-container", (element) => {
-            animate(
-                element,
-                { opacity: 1, scale: 1 },
-                { delay: 0.1, duration: 0.5 },
-            );
+            animate(element, { opacity: 1, scale: 1 }, { duration: 0.4 });
         });
     });
 </script>

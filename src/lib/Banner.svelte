@@ -21,25 +21,25 @@
         animate(
             "#hi-text",
             { opacity: 1, y: 0 },
-            { duration: 0.7, delay: 0.2 },
+            { duration: 0.3, delay: 0.2 },
         );
 
         animate(
             "#im-text",
             { opacity: 1, y: 0 },
-            { duration: 0.7, delay: 0.4 },
+            { duration: 0.3, delay: 0.4 },
         );
 
         animate(
             "#name-text",
             { opacity: 1, y: 0 },
-            { duration: 0.7, delay: 0.6 },
+            { duration: 0.3, delay: 0.6 },
         );
 
         animate(
             "#job-title",
             { opacity: 1, y: 0 },
-            { duration: 0.7, delay: 0.8 },
+            { duration: 0.3, delay: 0.8 },
         );
 
         animate(

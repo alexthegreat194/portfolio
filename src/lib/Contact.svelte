@@ -1,6 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import posthog from "posthog-js";
+    import { animate, inView } from "motion";
 
     let isMinus = false;
     let degit0 = 0;
@@ -23,7 +24,33 @@
         statement = `what is ${degit0} ${isMinus ? "-" : "+"} ${degit1}?`;
     };
 
-    onMount(resetCaptcha);
+    onMount(() => {
+        resetCaptcha();
+
+        inView("#github-link", () => {
+            animate(
+                "#github-link",
+                { opacity: [0, 1], y: [50, 0] },
+                { duration: 0.5 },
+            );
+        });
+
+        inView("#linkedin-link", () => {
+            animate(
+                "#linkedin-link",
+                { opacity: [0, 1], y: [50, 0] },
+                { duration: 0.5, delay: 0.2 },
+            );
+        });
+
+        inView("#email-link", () => {
+            animate(
+                "#email-link",
+                { opacity: [0, 1], y: [50, 0] },
+                { duration: 0.5, delay: 0.4 },
+            );
+        });
+    });
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -92,6 +119,7 @@ m-25 mb-32"
         class="grid grid-row-3 sm:grid-cols-3 w-full sm:w-fit m-0 sm:m-5 justify-center items-center gap-4 text-red-700"
     >
         <a
+            id="github-link"
             href="https://github.com/alexthegreat194"
             target="_blank"
             on:click={() => trackSocialClick("github")}
@@ -115,6 +143,7 @@ m-25 mb-32"
             </div>
         </a>
         <a
+            id="linkedin-link"
             href="https://www.linkedin.com/in/alexander-harlan/"
             target="_blank"
             on:click={() => trackSocialClick("linkedin")}
@@ -138,6 +167,7 @@ m-25 mb-32"
             </div>
         </a>
         <a
+            id="email-link"
             href="mailto:alexharlan194@gmail.com"
             target="_blank"
             on:click={() => trackSocialClick("email")}
