@@ -5,6 +5,19 @@
     import { animate, hover, inView } from "motion";
     import { onMount } from "svelte";
 
+    let profileImageLoaded = false;
+
+    function handleImageLoad() {
+        profileImageLoaded = true;
+        if (profileImageLoaded) {
+            animate(
+                "#profile-image",
+                { scale: 1 },
+                { ease: "circInOut", duration: 1, delay: 0.2 },
+            );
+        }
+    }
+
     onMount(() => {
         hover("#profile-image", (element) => {
             animate(element, { scale: 1.1 });
@@ -42,11 +55,7 @@
             { duration: 0.3, delay: 0.8 },
         );
 
-        animate(
-            "#profile-image",
-            { scale: 1 },
-            { ease: "circInOut", duration: 1, delay: 1.1 },
-        );
+        // Profile image animation is now handled in the onload event
     });
 </script>
 
@@ -91,6 +100,7 @@
             draggable="false"
             alt="profile"
             id="profile-image"
+            on:load={handleImageLoad}
         />
     </div>
 </div>
