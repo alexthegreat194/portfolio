@@ -11,16 +11,16 @@
 
 <!-- Navbar -->
 <div class="h-14 w-screen fixed z-10 top-0 bg-gray-900 text-gray-50
-grid grid-cols-2">
+    flex items-center justify-between px-4 sm:px-8 md:px-12">
     <div class="h-full 
-        flex items-center justify-center gap-3
-        font-bold text-xl sm:text-2xl 
+        flex items-center gap-2 sm:gap-3
+        font-bold text-lg sm:text-2xl 
         text-red-700">
-        <img src="{logo}" alt="Logo" class="h-3/4">
+        <img src="{logo}" alt="Logo" class="h-9 sm:h-10">
         <span class="whitespace-nowrap">Alex Harlan</span>
     </div>
-    <nav class="font-light text-md sm:text-xl text-gray-50
-        flex items-center justify-center gap-6">
+    <nav class="font-light text-sm sm:text-xl text-gray-50
+        flex items-center gap-4 sm:gap-6">
         <a href="#projects" on:click={() => trackNavigation('projects')}>Projects</a>
         <a href="#contact" on:click={() => trackNavigation('contacts')}>Contacts</a>
     </nav>
