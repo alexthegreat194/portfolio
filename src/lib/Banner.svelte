@@ -1,20 +1,31 @@
+<svelte:options runes={false} />
+
 <script>
-    import background from "$lib/assets/background2-transparent.png";
-    import profile from "$lib/assets/profile-final.jpg";
+	const background = '/media/background2-transparent.png';
+	const profile = '/media/profile-final.jpg';
 
-    import { animate, hover, inView } from "motion";
-    import { onMount } from "svelte";
+    import { animate, hover } from "motion";
+    import { onMount, tick } from "svelte";
 
-    let profileImageLoaded = false;
+    /** @type {HTMLImageElement | undefined} */
+    let profileImg;
 
-    function handleImageLoad() {
-        profileImageLoaded = true;
-        if (profileImageLoaded) {
-            animate(
-                "#profile-image",
-                { scale: 1 },
-                { ease: "circInOut", duration: 1, delay: 0.2 },
-            );
+    let profileRevealDone = false;
+
+    function revealProfileImage() {
+        if (profileRevealDone) return;
+        profileRevealDone = true;
+        animate(
+            "#profile-image",
+            { scale: 1 },
+            { ease: "circInOut", duration: 1, delay: 0.2 },
+        );
+    }
+
+    function syncProfileImageIfAlreadyLoaded() {
+        const el = profileImg;
+        if (el?.complete && el.naturalWidth > 0) {
+            revealProfileImage();
         }
     }
 
@@ -55,7 +66,8 @@
             { duration: 0.3, delay: 0.8 },
         );
 
-        // Profile image animation is now handled in the onload event
+        // `load` can miss when the image is cached or finishes before hydration attaches `on:load`.
+        void tick().then(() => syncProfileImageIfAlreadyLoaded());
     });
 </script>
 
@@ -94,13 +106,15 @@
         </h5>
 
         <img
+            bind:this={profileImg}
             class="object-cover w-[200px] h-[200px] rounded-full
         border-8 border-solid border-gray-900 scale-0"
             src={profile}
             draggable="false"
             alt="profile"
             id="profile-image"
-            on:load={handleImageLoad}
+            on:load={revealProfileImage}
+            on:error={revealProfileImage}
         />
     </div>
 </div>

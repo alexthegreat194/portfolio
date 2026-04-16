@@ -1,34 +1,33 @@
 {
-  "name": "portfolio",
+  "name": "astro",
+  "type": "module",
   "version": "0.0.1",
   "engines": {
-    "node": ">=18"
+    "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "svelte-kit dev",
-    "build": "svelte-kit build",
-    "package": "svelte-kit package",
-    "preview": "svelte-kit preview"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/svelte": "^8.0.4",
+    "@astrojs/vercel": "^10.0.4",
+    "@sendgrid/mail": "^8.1.4",
+    "@vercel/analytics": "^1.5.0",
+    "astro": "^6.1.6",
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "mongodb": "^6.12.0",
+    "motion": "^12.9.1",
+    "posthog-js": "^1.217.2",
+    "svelte": "^5.43.6",
+    "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
-    "@sendgrid/mail": "^7.6.1",
-    "@sveltejs/adapter-auto": "next",
-    "@sveltejs/adapter-vercel": "next",
-    "@sveltejs/kit": "next",
-    "autoprefixer": "^10.4.2",
-    "postcss": "^8.4.6",
-    "svelte": "^3.44.0",
-    "tailwindcss": "^3.0.19"
-  },
-  "type": "module",
-  "dependencies": {
-    "@sveltejs/adapter-node": "^1.0.0-next.68",
-    "@vercel/analytics": "^1.2.2",
-    "axios": "^0.26.0",
-    "dotenv": "^16.0.0",
-    "mangodb": "^1.0.0",
-    "mongodb": "^4.4.0",
-    "motion": "^12.9.1",
-    "posthog-js": "^1.217.2"
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "typescript": "^5.7.2"
   }
 }

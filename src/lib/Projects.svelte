@@ -1,3 +1,5 @@
+<svelte:options runes={false} />
+
 <script>
     import Project from "./components/Project.svelte";
 </script>

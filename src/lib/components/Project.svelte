@@ -1,3 +1,5 @@
+<svelte:options runes={false} />
+
 <script>
     import { animate, inView } from "motion";
     import posthog from "posthog-js";

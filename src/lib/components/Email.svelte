@@ -1,5 +1,7 @@
+<svelte:options runes={false} />
+
 <script>
-	import axios, { Axios } from "axios";
+	import axios from 'axios';
 
     export let _id = '';
     export let subject = 'Subject';

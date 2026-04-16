@@ -1,6 +1,9 @@
+<svelte:options runes={false} />
+
 <script>
-    import logo from '$lib/assets/logo.png'
     import posthog from 'posthog-js'
+
+	const logo = '/media/logo.png';
 
     const trackNavigation = (section) => {
         posthog.capture('navigation_click', {
