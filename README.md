@@ -1,40 +1,32 @@
-# create-svelte
+# Portfolio (Astro + Svelte)
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Personal site built with [Astro](https://astrobuild.dev/) and [`@astrojs/svelte`](https://docs.astro.build/en/guides/integrations-guide/svelte/). UI lives in Svelte islands under `src/lib/` and `src/components/islands/`; document shell and routes are Astro (`src/pages/`, `src/layouts/`).
 
-## Creating a project
+Raster and vector artwork for the UI live under [`public/media/`](public/media/) and are referenced with absolute paths such as `/media/logo.png` so they are always copied to the build output and served as static files.
 
-If you're seeing this, you've probably already done this step. Congrats!
+Server routes (`/api/contact`, `/api/admin`, `/api/email/delete`) are implemented as Astro endpoints in `src/pages/api/`. The project uses `output: 'server'` and the [`@astrojs/vercel`](https://docs.astro.build/en/guides/integrations-guide/vercel/) adapter.
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
+## Requirements
 
-# create a new project in my-app
-npm init svelte@next my-app
-```
+- Node.js **>= 22.12.0** (required by Astro 6 and this repo’s `engines` field).
 
-> Note: the `@next` is temporary
+## Commands
 
-## Developing
+| Command           | Action                          |
+| ----------------- | ------------------------------- |
+| `npm install`     | Install dependencies            |
+| `npm run dev`     | Dev server (default port 4321)  |
+| `npm run build`   | Production build                |
+| `npm run preview` | Preview the production build    |
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Environment variables
 
-```bash
-npm run dev
+Set these locally (e.g. `.env`) or in your host (e.g. Vercel):
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+| Variable            | Purpose                                      |
+| ------------------- | -------------------------------------------- |
+| `MONGODB_URI`       | MongoDB connection string                    |
+| `SENDGRID_API_KEY`  | SendGrid API key for contact form email      |
+| `ADMIN_PASSWORD`    | Password for `/admin` and email delete API   |
 
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment.
+PostHog and Vercel Analytics run in the browser via `src/components/islands/AnalyticsPosthog.svelte`.

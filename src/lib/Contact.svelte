@@ -1,3 +1,5 @@
+<svelte:options runes={false} />
+
 <script>
     import { onMount } from "svelte";
     import posthog from "posthog-js";

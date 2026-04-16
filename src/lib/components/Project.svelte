@@ -1,3 +1,5 @@
+<svelte:options runes={false} />
+
 <script>
     import { animate, inView } from "motion";
     import posthog from "posthog-js";
@@ -54,7 +56,7 @@
             {description}
         </p>
 
-        <div class="m-4 flex flex-wrap justify-center sm:justify-start gap-2">
+        <div class="m-4 flex flex-wrap justify-start gap-2">
             <a
                 class="
                 text-xl sm:text-2xl font-medium bg-red-700
