@@ -9,9 +9,15 @@ We keep a small **`notes/`** folder at the repo root in every project going forw
 
 Treat **`NOTES` + `TODO`** as the default pair: durable narrative in one, action list in the other, both easy to find without hunting through chat or ad-hoc files.
 
+## Commits, site content, and CMS
+
+For changes that are **additions or updates to what the site says or shows** (project blurbs, copy, listings, static data) rather than code structure, use a **`content:`**-style message or plain-English subject lines (e.g. “Add Emberblade to projects”). **Reserve `refactor` for code-only** reorganizing where behavior is intentionally unchanged; it reads wrong for marketing or portfolio text.
+
+A **headless CMS (or full CMS) was considered** for this portfolio. It was decided that **editing static content in the repo is fine for now**—simpler deploys, no extra service, and good enough for the scale of updates here. A CMS is still an option if content churn, non-dev editors, or richer editing eventually justify it.
+
 ## Node.js and Astro 6
 
-This repo uses **Astro 6** with `package.json` engines **`node": ">=22.12.0"`** (Astro 6’s documented minimum is Node **22.12.0+**).
+This repo uses **Astro 6** with `package.json` engines **`"node": ">=22.12.0"`** (Astro 6’s documented minimum is Node **22.12.0+**).
 
 - **Use Node 22.12+**, preferably the **Node 22 LTS** line (even majors). Avoid odd major versions (e.g. 23, 25) for Astro, per [Astro’s docs](https://docs.astro.build).
 
