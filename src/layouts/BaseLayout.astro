@@ -1,6 +1,7 @@
 ---
 import '../styles/app.css';
 import AnalyticsPosthog from '../components/islands/AnalyticsPosthog.svelte';
+import SiteFooter from '../components/SiteFooter.astro';
 
 const logo = '/media/logo.png';
 
@@ -12,7 +13,7 @@ const { title = 'Alex Harlan' }: Props = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-full bg-gray-900 overscroll-y-none">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,8 +23,15 @@ const { title = 'Alex Harlan' }: Props = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="min-h-screen bg-gray-900 overflow-x-hidden">
-		<slot />
+	<body
+		class="flex min-h-full flex-col overflow-x-hidden bg-gray-900 overscroll-y-none"
+	>
+		<div class="flex min-h-0 flex-1 flex-col gap-8">
+			<main class="min-h-0 flex-1">
+				<slot />
+			</main>
+			<SiteFooter />
+		</div>
 		<AnalyticsPosthog client:load />
 	</body>
 </html>
