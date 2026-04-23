@@ -34,6 +34,14 @@
         repo="https://github.com/alexthegreat194/actichat"
     />
 
+    <Project
+        title="Emberblade"
+        tool="C++/SFML"
+        description="Built a complete 2D top-down game with tile-based world, interactive systems (inventory, crafting, combat), and collision/damage mechanics. Handled architecture from the ground up: game loop, rendering pipeline, and subsystem design."
+        visit=""
+        repo="https://github.com/alexthegreat194/Emberblade"
+    />
+
     <!-- <Project
         title='Social Prescribing'
         tool='Express.js/React'

@@ -61,7 +61,8 @@
                 class="
                 text-xl sm:text-2xl font-medium bg-red-700
                 px-6 py-2 sm:px-7 sm:py-3 rounded-full mx-2 border border-red-700
-                hover:bg-gray-800 hover:text-red-700 hover:cursor-pointer transition-colors"
+                hover:bg-gray-800 hover:text-red-700 hover:cursor-pointer transition-colors
+                {visit === '' ? 'hidden' : ''}"
                 href={visit}
                 target="_blank"
                 on:click={() => trackProjectClick("visit", title)}
