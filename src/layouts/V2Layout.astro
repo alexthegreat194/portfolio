@@ -1,0 +1,43 @@
+---
+import '../styles/app.css';
+import AnalyticsPosthog from '../components/islands/AnalyticsPosthog.svelte';
+
+interface Props {
+	title?: string;
+}
+
+const { title = 'Alex Harlan' }: Props = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<title>{title}</title>
+		<style>
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+				background: #0b0a09;
+				overflow-x: hidden;
+			}
+			* {
+				box-sizing: border-box;
+			}
+		</style>
+	</head>
+	<body>
+		<slot />
+		<AnalyticsPosthog client:load />
+	</body>
+</html>
