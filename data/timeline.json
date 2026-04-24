@@ -1,0 +1,82 @@
+[
+	{
+		"category": "work",
+		"dateRange": "Nov 2023 — Jan 2026",
+		"sortOrder": 202311,
+		"organization": "High Fidelity",
+		"role": "Software Engineer",
+		"context": "San Francisco, CA",
+		"description": "Shipped a user-connection-score algorithm, rebuilt expensive background tasks as microservices with multi-tier caching, and scaled concurrent users per domain 3× (30 → 90) while keeping sub-second response.",
+		"tags": ["TypeScript", "Node", "MongoDB", "Redis"]
+	},
+	{
+		"category": "side",
+		"dateRange": "Apr 2026",
+		"sortOrder": 202604,
+		"organization": "VidVault",
+		"role": "Personal project",
+		"context": "Go · zero-dep binary",
+		"description": "Local video gallery server in Go with an embedded web UI — folder organization, search, drag-and-drop, bulk uploads, and lightbox playback over HTTP range requests. Shipped with Docker.",
+		"tags": ["Go", "HTTP", "Docker"]
+	},
+	{
+		"category": "side",
+		"dateRange": "Jan — May 2025",
+		"sortOrder": 202501,
+		"organization": "Forge PT",
+		"role": "Freelance · marketing site",
+		"context": "Client: Dr. Ming, DPT",
+		"description": "Responsive marketing site for a physical therapy practice specializing in athletic recovery. Design, build, copy polish.",
+		"tags": ["Freelance", "Webflow", "Responsive"]
+	},
+	{
+		"category": "side",
+		"dateRange": "Jul 2023 — present",
+		"sortOrder": 202307,
+		"organization": "Doink",
+		"role": "Personal project",
+		"context": "Group collaboration platform",
+		"description": "RESTful API with 20+ endpoints, Redis sessions, and a normalized Postgres schema via Prisma. Role-based group permissions with invite codes and custom auth middleware. Dockerized, with Mocha/Chai coverage.",
+		"tags": ["Node", "Postgres", "Prisma", "Docker"]
+	},
+	{
+		"category": "side",
+		"dateRange": "Jul 2023 — present",
+		"sortOrder": 202307.5,
+		"organization": "Actichat",
+		"role": "Personal project",
+		"context": "Real-time chat platform",
+		"description": "Flask-SocketIO chat with dynamic room creation and shareable invite links. WebSocket session management and connection pooling track clients across concurrent rooms in real time.",
+		"tags": ["Python", "Flask", "WebSockets"]
+	},
+	{
+		"category": "work",
+		"dateRange": "2023",
+		"sortOrder": 202301,
+		"organization": "High Fidelity",
+		"role": "Software Engineer Intern",
+		"context": "San Francisco, CA",
+		"description": "Built UI features in Svelte + Tailwind with PixiJS canvas visualizations. Added REST transactions to eliminate race conditions under high-traffic MongoDB writes.",
+		"tags": ["Svelte", "Tailwind", "PixiJS"]
+	},
+	{
+		"category": "side",
+		"dateRange": "Apr 2020 — Feb 2021",
+		"sortOrder": 202004,
+		"organization": "A Roundabout Path",
+		"role": "Head Scripter · Teaching",
+		"context": "Roblox Studio · anime-style MP",
+		"description": "Architected the Lua scripting systems and ran the deploy pipeline. Set up Trello + version control for 4+ developers and ran the Discord community.",
+		"tags": ["Lua", "Roblox", "Leadership"]
+	},
+	{
+		"category": "side",
+		"dateRange": "Jan — Jun 2020",
+		"sortOrder": 202001,
+		"organization": "Emberblade",
+		"role": "Personal project",
+		"context": "C++11 · SFML",
+		"description": "Top-down 2D game — tile-based world traversal, inventory/crafting UI, weapon-hitbox combat, NPC interactions. Gameplay organized into modular subsystems (Inventory, Collision, Notification).",
+		"tags": ["C++", "SFML", "Game dev"]
+	}
+]

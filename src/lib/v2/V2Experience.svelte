@@ -1,99 +1,18 @@
 <svelte:options runes={false} />
 
 <script>
-	const timeline = [
-		{
-			kind: 'work',
-			y: 'Nov 2023 — Jan 2026',
-			sort: 202311,
-			c: 'High Fidelity',
-			r: 'Software Engineer',
-			loc: 'San Francisco, CA',
-			d: 'Shipped a user-connection-score algorithm, rebuilt expensive background tasks as microservices with multi-tier caching, and scaled concurrent users per domain 3× (30 → 90) while keeping sub-second response.',
-			tags: ['TypeScript', 'Node', 'MongoDB', 'Redis'],
-		},
-		{
-			kind: 'side',
-			y: 'Apr 2026',
-			sort: 202604,
-			c: 'VidVault',
-			r: 'Personal project',
-			loc: 'Go · zero-dep binary',
-			d: 'Local video gallery server in Go with an embedded web UI — folder organization, search, drag-and-drop, bulk uploads, and lightbox playback over HTTP range requests. Shipped with Docker.',
-			tags: ['Go', 'HTTP', 'Docker'],
-		},
-		{
-			kind: 'side',
-			y: 'Jan — May 2025',
-			sort: 202501,
-			c: 'Forge PT',
-			r: 'Freelance · marketing site',
-			loc: 'Client: Dr. Ming, DPT',
-			d: 'Responsive marketing site for a physical therapy practice specializing in athletic recovery. Design, build, copy polish.',
-			tags: ['Freelance', 'Webflow', 'Responsive'],
-		},
-		{
-			kind: 'side',
-			y: 'Jul 2023 — present',
-			sort: 202307,
-			c: 'Doink',
-			r: 'Personal project',
-			loc: 'Group collaboration platform',
-			d: 'RESTful API with 20+ endpoints, Redis sessions, and a normalized Postgres schema via Prisma. Role-based group permissions with invite codes and custom auth middleware. Dockerized, with Mocha/Chai coverage.',
-			tags: ['Node', 'Postgres', 'Prisma', 'Docker'],
-		},
-		{
-			kind: 'side',
-			y: 'Jul 2023 — present',
-			sort: 202307.5,
-			c: 'Actichat',
-			r: 'Personal project',
-			loc: 'Real-time chat platform',
-			d: 'Flask-SocketIO chat with dynamic room creation and shareable invite links. WebSocket session management and connection pooling track clients across concurrent rooms in real time.',
-			tags: ['Python', 'Flask', 'WebSockets'],
-		},
-		{
-			kind: 'work',
-			y: '2023',
-			sort: 202301,
-			c: 'High Fidelity',
-			r: 'Software Engineer Intern',
-			loc: 'San Francisco, CA',
-			d: 'Built UI features in Svelte + Tailwind with PixiJS canvas visualizations. Added REST transactions to eliminate race conditions under high-traffic MongoDB writes.',
-			tags: ['Svelte', 'Tailwind', 'PixiJS'],
-		},
-		{
-			kind: 'side',
-			y: 'Apr 2020 — Feb 2021',
-			sort: 202004,
-			c: 'A Roundabout Path',
-			r: 'Head Scripter · Teaching',
-			loc: 'Roblox Studio · anime-style MP',
-			d: 'Architected the Lua scripting systems and ran the deploy pipeline. Set up Trello + version control for 4+ developers and ran the Discord community.',
-			tags: ['Lua', 'Roblox', 'Leadership'],
-		},
-		{
-			kind: 'side',
-			y: 'Jan — Jun 2020',
-			sort: 202001,
-			c: 'Emberblade',
-			r: 'Personal project',
-			loc: 'C++11 · SFML',
-			d: 'Top-down 2D game — tile-based world traversal, inventory/crafting UI, weapon-hitbox combat, NPC interactions. Gameplay organized into modular subsystems (Inventory, Collision, Notification).',
-			tags: ['C++', 'SFML', 'Game dev'],
-		},
-	];
+	import timeline from '../../../data/timeline.json';
 
 	let filter = 'all';
 
 	$: counts = {
 		all: timeline.length,
-		work: timeline.filter((i) => i.kind === 'work').length,
-		side: timeline.filter((i) => i.kind === 'side').length,
+		work: timeline.filter((i) => i.category === 'work').length,
+		side: timeline.filter((i) => i.category === 'side').length,
 	};
 
-	$: items = (filter === 'all' ? timeline : timeline.filter((i) => i.kind === filter)).sort(
-		(a, b) => b.sort - a.sort
+	$: items = (filter === 'all' ? timeline : timeline.filter((i) => i.category === filter)).sort(
+		(a, b) => b.sortOrder - a.sortOrder
 	);
 </script>
 
@@ -186,16 +105,16 @@
 				<!-- Date + kind -->
 				<div style="padding-top: 2px;">
 					<div
-						style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {it.kind === 'work'
+						style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {it.category === 'work'
 							? '#b91c1c'
 							: 'rgba(245,240,234,0.62)'}; letter-spacing: 0.8px;"
 					>
-						{it.y}
+						{it.dateRange}
 					</div>
 					<div
 						style="margin-top: 6px; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: rgba(245,240,234,0.38); letter-spacing: 1.5px; text-transform: uppercase;"
 					>
-						{it.kind === 'work' ? 'Professional' : 'Side · freelance'}
+						{it.category === 'work' ? 'Professional' : 'Side · freelance'}
 					</div>
 				</div>
 
@@ -203,7 +122,7 @@
 				<div
 					style="position: relative; display: flex; justify-content: center; padding-top: 4px;"
 				>
-					{#if it.kind === 'work'}
+					{#if it.category === 'work'}
 						<div
 							style="width: 12px; height: 12px; border-radius: 50%; background: #b91c1c; box-shadow: 0 0 0 4px #141210, 0 0 0 5px #3a352f; flex-shrink: 0;"
 						></div>
@@ -217,22 +136,22 @@
 				<!-- Content -->
 				<div>
 					<div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;">
-						<div style="font-size: 18px; font-weight: 700; letter-spacing: -0.3px;">{it.c}</div>
+						<div style="font-size: 18px; font-weight: 700; letter-spacing: -0.3px;">{it.organization}</div>
 						<div
 							style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(245,240,234,0.38);"
 						>
-							{it.loc}
+							{it.context}
 						</div>
 					</div>
 					<div
 						style="font-size: 13px; color: rgba(245,240,234,0.62); margin-top: 2px; font-weight: 500;"
 					>
-						{it.r}
+						{it.role}
 					</div>
 					<div
 						style="font-size: 13px; color: rgba(245,240,234,0.62); margin-top: 8px; line-height: 1.55; max-width: 620px;"
 					>
-						{it.d}
+						{it.description}
 					</div>
 					{#if it.tags}
 						<div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;">

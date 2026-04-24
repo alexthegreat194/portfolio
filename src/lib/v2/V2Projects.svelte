@@ -1,62 +1,10 @@
 <svelte:options runes={false} />
 
 <script>
-	const projects = [
-		{
-			title: 'VidVault',
-			stack: 'Go · Docker',
-			description:
-				'Local video gallery server in Go with an embedded web UI — folder organization, search, drag-and-drop, bulk uploads, and lightbox playback over HTTP range requests.',
-			tags: ['Go', 'HTTP', 'Docker'],
-			year: '2026',
-			visit: '',
-			repo: 'https://github.com/alexthegreat194/vidvault',
-		},
-		{
-			title: 'Forge PT',
-			stack: 'Webflow',
-			description:
-				"Freelance site for Dr. Ming's PT practice — athlete-focused, motion-first narrative. Responsive marketing site for a practice specializing in athletic recovery.",
-			tags: ['Webflow', 'CMS', 'Responsive'],
-			year: '2025',
-			visit: 'https://www.ptforge.com/',
-			repo: '',
-		},
-		{
-			title: 'Doink',
-			stack: 'React · Express',
-			description:
-				'Group management for friend groups: shared finances, moments, and shopping lists. RESTful API with 20+ endpoints, Redis sessions, and normalized Postgres schema.',
-			tags: ['React', 'Express', 'MongoDB'],
-			year: '2023',
-			visit: 'https://doink.otterlabs.co',
-			repo: 'https://github.com/noname-friend-app/friend-app-api',
-		},
-		{
-			title: 'Actichat',
-			stack: 'Flask',
-			description:
-				'Realtime chat rooms with shareable join links. WebSocket session management and connection pooling track clients across concurrent rooms in real time.',
-			tags: ['Flask', 'WebSockets', 'Redis'],
-			year: '2023',
-			visit: 'https://actichat.onrender.com',
-			repo: 'https://github.com/alexthegreat194/actichat',
-		},
-		{
-			title: 'Emberblade',
-			stack: 'C++ · SFML',
-			description:
-				'Top-down 2D game — tile-based world traversal, inventory/crafting UI, weapon-hitbox combat, NPC interactions. Gameplay organized into modular subsystems.',
-			tags: ['C++', 'SFML', 'Game dev'],
-			year: '2020',
-			visit: '',
-			repo: 'https://github.com/alexthegreat194/Emberblade',
-		},
-	];
+	import projects from '../../../data/projects.json';
 </script>
 
 <section id="work" style="padding: 80px 48px;">
-	<!-- Section header -->
 	<div
 		style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; flex-wrap: wrap; gap: 16px;"
 	>
@@ -81,24 +29,22 @@
 		</div>
 	</div>
 
-	<!-- Projects grid -->
 	<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
 		{#each projects as p}
 			<div
 				style="background: #1a1714; border: 1px solid #2c2823; border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.35); overflow: hidden; display: flex; flex-direction: column;"
 			>
-				<!-- Preview placeholder -->
 				<div
 					style="height: 180px; background: repeating-linear-gradient(135deg, #2c2823 0 10px, #1f1c19 10px 20px); border-bottom: 1px solid #2c2823; display: flex; align-items: center; justify-content: center; color: rgba(245,240,234,0.38); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.4px;"
 				>
-					{p.title} · preview
+					{p.name} · preview
 				</div>
 
 				<div style="padding: 22px;">
 					<div
 						style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;"
 					>
-						<div style="font-size: 22px; font-weight: 700; letter-spacing: -0.4px;">{p.title}</div>
+						<div style="font-size: 22px; font-weight: 700; letter-spacing: -0.4px;">{p.name}</div>
 						<div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(245,240,234,0.62);">{p.year}</div>
 					</div>
 
@@ -117,16 +63,16 @@
 					</div>
 
 					<div style="display: flex; gap: 8px;">
-						{#if p.visit}
+						{#if p.liveUrl}
 							<a
-								href={p.visit}
+								href={p.liveUrl}
 								target="_blank"
 								style="font-size: 12px; font-weight: 600; padding: 8px 18px; border-radius: 999px; background: #b91c1c; color: #fff; text-decoration: none;"
 							>Visit →</a>
 						{/if}
-						{#if p.repo}
+						{#if p.repositoryUrl}
 							<a
-								href={p.repo}
+								href={p.repositoryUrl}
 								target="_blank"
 								style="font-size: 12px; font-weight: 600; padding: 8px 18px; border-radius: 999px; border: 1px solid #b91c1c; color: #b91c1c; text-decoration: none;"
 							>Repo</a>
