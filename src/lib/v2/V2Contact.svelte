@@ -1,8 +1,8 @@
 <svelte:options runes={false} />
 
-<section id="contact" style="padding: 0 48px 90px;">
+<section id="contact" style="padding: 0 var(--v2-page-gutter) calc(var(--v2-section-y) + 1.25rem);">
 	<div
-		style="background: #1a1714; border: 1px solid #2c2823; border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.35); padding: 56px; text-align: center; position: relative; overflow: hidden;"
+		style="background: #1a1714; border: 1px solid #2c2823; border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.35); padding: clamp(3rem, 7vw, 4.25rem) clamp(2rem, 5vw, 3.5rem); text-align: center; position: relative; overflow: hidden;"
 	>
 		<!-- Accent orb inside card -->
 		<div
@@ -32,7 +32,7 @@
 				<!-- Email (primary) -->
 				<a
 					href="mailto:alexharlan194@gmail.com"
-					style="background: #b91c1c; border: 1px solid #b91c1c; box-shadow: 0 6px 20px rgba(185,28,28,0.4); border-radius: 999px; padding: 12px 22px; display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; font-family: 'Inter', system-ui, sans-serif;"
+					style="background: #b91c1c; border: 1px solid #b91c1c; box-shadow: 0 6px 20px rgba(185,28,28,0.4); border-radius: 999px; padding: calc(var(--v2-pill-pad-y) + 0.2rem) calc(var(--v2-pill-pad-x) + 0.85rem); display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; font-family: 'Inter', system-ui, sans-serif;"
 				>
 					<span>✉</span> Email
 				</a>
@@ -41,7 +41,7 @@
 				<a
 					href="https://github.com/alexthegreat194"
 					target="_blank"
-					style="background: rgba(30,26,22,0.42); backdrop-filter: blur(22px) saturate(1.4); -webkit-backdrop-filter: blur(22px) saturate(1.4); border: 1px solid rgba(255,255,255,0.10); box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08); border-radius: 999px; padding: 12px 22px; display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #f5f0ea; text-decoration: none; font-family: 'Inter', system-ui, sans-serif;"
+					style="background: rgba(30,26,22,0.42); backdrop-filter: blur(22px) saturate(1.4); -webkit-backdrop-filter: blur(22px) saturate(1.4); border: 1px solid rgba(255,255,255,0.10); box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08); border-radius: 999px; padding: calc(var(--v2-pill-pad-y) + 0.2rem) calc(var(--v2-pill-pad-x) + 0.85rem); display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; color: #f5f0ea; text-decoration: none; font-family: 'Inter', system-ui, sans-serif;"
 				>
 					<span>◉</span> GitHub
 				</a>
@@ -50,7 +50,7 @@
 				<a
 					href="https://linkedin.com/in/alexander-harlan"
 					target="_blank"
-					style="background: rgba(30,26,22,0.42); backdrop-filter: blur(22px) saturate(1.4); -webkit-backdrop-filter: blur(22px) saturate(1.4); border: 1px solid rgba(255,255,255,0.10); box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08); border-radius: 999px; padding: 12px 22px; display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #f5f0ea; text-decoration: none; font-family: 'Inter', system-ui, sans-serif;"
+					style="background: rgba(30,26,22,0.42); backdrop-filter: blur(22px) saturate(1.4); -webkit-backdrop-filter: blur(22px) saturate(1.4); border: 1px solid rgba(255,255,255,0.10); box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08); border-radius: 999px; padding: calc(var(--v2-pill-pad-y) + 0.2rem) calc(var(--v2-pill-pad-x) + 0.85rem); display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; color: #f5f0ea; text-decoration: none; font-family: 'Inter', system-ui, sans-serif;"
 				>
 					<span style="font-size: 11px; font-weight: 800;">in</span> LinkedIn
 				</a>

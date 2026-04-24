@@ -4,7 +4,7 @@
 	const profile = '/media/profile-final.jpg';
 </script>
 
-<section id="about" style="padding: 40px 48px;">
+<section id="about" style="padding: var(--v2-section-y-tight) var(--v2-page-gutter);">
 	<!-- Section header -->
 	<div style="margin-bottom: 28px;">
 		<div
@@ -21,9 +21,9 @@
 
 	<!-- Card -->
 	<div
-		style="background: #1a1714; border: 1px solid #2c2823; border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.35); padding: 44px 48px 40px; position: relative; overflow: hidden;"
+		style="background: #1a1714; border: 1px solid #2c2823; border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.35); padding: var(--v2-card-pad-lg) calc(var(--v2-card-pad-lg) + 0.5rem) calc(var(--v2-card-pad-lg) - 0.25rem); position: relative; overflow: hidden;"
 	>
-		<div style="display: grid; grid-template-columns: 220px 1fr; gap: 48px; align-items: start;">
+		<div style="display: grid; grid-template-columns: 220px 1fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: start;">
 			<!-- Left: portrait + meta -->
 			<div>
 				<div
@@ -73,7 +73,7 @@
 
 				<a
 					href="/v2/about"
-					style="display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #b91c1c; font-weight: 600; padding: 10px 16px; border-radius: 999px; border: 1px solid #b91c1c; background: rgba(185,28,28,0.08);"
+					style="display: inline-flex; align-items: center; gap: 12px; margin-top: 28px; text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #b91c1c; font-weight: 600; padding: var(--v2-pill-pad-y) calc(var(--v2-pill-pad-x) + 0.35rem); border-radius: 999px; border: 1px solid #b91c1c; background: rgba(185,28,28,0.08);"
 				>
 					Continue reading <span style="font-size: 14px;">→</span>
 				</a>

@@ -4,6 +4,7 @@
 - [x] site redesign with claude design
 - [ ] site blog post
 - [ ] rss feed
+- [ ] convert v2 to tialwind
 
 ## V2 Checklist:
 - [ ] add app padding

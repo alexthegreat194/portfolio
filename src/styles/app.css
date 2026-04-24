@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * V2 spacing — no outer layout shell (backgrounds stay full-bleed).
+ * --v2-page-gutter: horizontal inset for sections + hero (small min + 8vw → tight when narrow).
+ * --v2-nav-gutter: fixed nav left/right (slightly smaller than page gutter).
+ */
+:root {
+	/* Section / hero horizontal inset — main “outer gutter”. */
+	/* Narrow viewports: low min + moderate vw so gutters stay small when compressed. */
+	--v2-page-gutter: clamp(0.75rem, 8vw, 12rem);
+	/* Fixed nav sits a bit closer to the viewport than section content. */
+	--v2-nav-gutter: max(0.5rem, calc(var(--v2-page-gutter) - 1rem));
+	--v2-stack-gap: clamp(0.65rem, 2.5vw, 2rem);
+	--v2-pill-pad-x: 1.05rem;
+	--v2-pill-pad-y: 0.65rem;
+	/* Top nav only: a touch tighter inside the pill than other glass chips. */
+	--v2-nav-pill-pad-x: 0.88rem;
+	--v2-nav-pill-pad-y: 0.52rem;
+	--v2-card-pad: clamp(0.5rem, 1vw, 0.85rem);
+	--v2-card-pad-lg: clamp(0.7rem, 1.5vw, 1.05rem);
+	--v2-grid-gap: clamp(0.7rem, 2.2vw, 1.75rem);
+	--v2-section-y: clamp(1.65rem, 7vw, 5.75rem);
+	--v2-section-y-tight: clamp(1.25rem, 5vw, 3.5rem);
+}
+
 .spacer {
     aspect-ratio: 1000/150;
     width: 100%;

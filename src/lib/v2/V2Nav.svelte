@@ -4,8 +4,8 @@
 	style="
   position: fixed;
   top: 16px;
-  left: 24px;
-  right: 24px;
+  left: var(--v2-nav-gutter);
+  right: var(--v2-nav-gutter);
   z-index: 50;
   background: rgba(30,26,22,0.72);
   backdrop-filter: blur(22px) saturate(1.4);
@@ -13,7 +13,7 @@
   border: 1px solid rgba(255,255,255,0.10);
   box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
   border-radius: 999px;
-  padding: 10px 18px;
+  padding: var(--v2-nav-pill-pad-y) calc(var(--v2-nav-pill-pad-x) + 0.25rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -32,7 +32,7 @@
 		</div>
 		Alex Harlan
 	</a>
-	<div style="display: flex; gap: 22px; font-weight: 500;">
+	<div style="display: flex; gap: clamp(1rem, 2.2vw, 1.65rem); font-weight: 500;">
 		<a href="#work" style="color: #f5f0ea; text-decoration: none;">Work</a>
 		<a href="#about" style="color: rgba(245,240,234,0.62); text-decoration: none;">About</a>
 		<a href="#experience" style="color: rgba(245,240,234,0.62); text-decoration: none;">Experience</a>

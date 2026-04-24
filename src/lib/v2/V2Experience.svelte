@@ -16,7 +16,7 @@
 	);
 </script>
 
-<section id="experience" style="padding: 0 48px 80px;">
+<section id="experience" style="padding: 0 var(--v2-page-gutter) var(--v2-section-y);">
 	<!-- Section header -->
 	<div
 		style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; flex-wrap: wrap; gap: 16px;"
@@ -66,7 +66,7 @@
           border: 1px solid {filter === val ? '#b91c1c' : 'rgba(255,255,255,0.10)'};
           box-shadow: 0 4px 24px rgba(0,0,0,0.4);
           border-radius: 999px;
-          padding: 8px 14px;
+          padding: var(--v2-pill-pad-y) var(--v2-pill-pad-x);
           display: inline-flex;
           align-items: center;
           gap: 8px;
@@ -91,11 +91,11 @@
 
 	<!-- Timeline -->
 	<div
-		style="background: #1a1714; border: 1px solid #2c2823; border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.35); padding: 32px; position: relative;"
+		style="background: #1a1714; border: 1px solid #2c2823; border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.35); padding: var(--v2-card-pad-lg); position: relative;"
 	>
 		<!-- Vertical line -->
 		<div
-			style="position: absolute; left: 198px; top: 32px; bottom: 32px; width: 1px; background: #3a352f;"
+			style="position: absolute; left: 198px; top: var(--v2-card-pad-lg); bottom: var(--v2-card-pad-lg); width: 1px; background: #3a352f;"
 		></div>
 
 		{#each items as it, i}

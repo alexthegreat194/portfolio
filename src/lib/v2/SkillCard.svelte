@@ -45,9 +45,9 @@
 	></div>
 
 	<!-- Text layer -->
-	<div style="position: absolute; left: 18px; right: 18px; bottom: 16px; z-index: 2;">
+	<div style="position: absolute; left: var(--v2-card-pad-lg); right: var(--v2-card-pad-lg); bottom: var(--v2-card-pad); z-index: 2;">
 		<div
-			style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1.6px; text-transform: uppercase; color: {accent}; font-weight: 700; margin-bottom: 6px;"
+			style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1.6px; text-transform: uppercase; color: {accent}; font-weight: 700; margin-bottom: 8px;"
 		>
 			{tag}
 		</div>
@@ -57,7 +57,7 @@
 			{title}
 		</div>
 		<div
-			style="font-size: 12px; color: rgba(245,240,234,0.62); margin-top: 6px; line-height: 1.45; max-height: {hovered
+			style="font-size: 12px; color: rgba(245,240,234,0.62); margin-top: 8px; line-height: 1.5; max-height: {hovered
 				? '60px'
 				: '0'}; opacity: {hovered ? 1 : 0}; overflow: hidden; transition: max-height .35s, opacity .35s;"
 		>

@@ -69,7 +69,7 @@
 
 <section
 	id="skills"
-	style="padding: 40px 48px 80px; background: #0b0a09; color: #f5f0ea; font-family: 'Inter', system-ui, sans-serif;"
+	style="padding: var(--v2-section-y-tight) var(--v2-page-gutter) var(--v2-section-y); background: #0b0a09; color: #f5f0ea; font-family: 'Inter', system-ui, sans-serif;"
 >
 	<div style="margin-bottom: 32px;">
 		<div
@@ -92,7 +92,7 @@
 		</div>
 	</div>
 
-	<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+	<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--v2-grid-gap);">
 
 		<!-- 1. Connection-score algorithm — network graph -->
 		<SkillCard

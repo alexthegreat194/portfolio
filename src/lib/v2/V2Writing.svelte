@@ -23,7 +23,7 @@
 	];
 </script>
 
-<section id="writing" style="padding: 0 48px 80px;">
+<section id="writing" style="padding: 0 var(--v2-page-gutter) var(--v2-section-y);">
 	<!-- Section header -->
 	<div
 		style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; flex-wrap: wrap; gap: 16px;"
@@ -51,11 +51,11 @@
 
 	<!-- Post list -->
 	<div
-		style="background: #1a1714; border: 1px solid #2c2823; border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.35); padding: 10px;"
+		style="background: #1a1714; border: 1px solid #2c2823; border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.35); padding: var(--v2-card-pad);"
 	>
 		{#each posts as p, i}
 			<div
-				style="display: grid; grid-template-columns: 110px 1fr 80px; gap: 20px; padding: 22px; align-items: center; border-top: {i === 0
+				style="display: grid; grid-template-columns: 110px 1fr 80px; gap: 24px; padding: calc(var(--v2-card-pad) + 0.35rem) calc(var(--v2-card-pad-lg) - 0.25rem); align-items: center; border-top: {i === 0
 					? 'none'
 					: '1px solid #2c2823'};"
 			>
