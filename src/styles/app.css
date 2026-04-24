@@ -13,7 +13,7 @@
 	--v2-page-gutter: clamp(0.75rem, 8vw, 12rem);
 	/* Fixed nav sits a bit closer to the viewport than section content. */
 	--v2-nav-gutter: max(0.5rem, calc(var(--v2-page-gutter) - 1rem));
-	--v2-stack-gap: clamp(0.65rem, 2.5vw, 2rem);
+	--v2-stack-gap: clamp(0.48rem, 1.95vw, 1.5rem);
 	--v2-pill-pad-x: 1.05rem;
 	--v2-pill-pad-y: 0.65rem;
 	/* Top nav only: a touch tighter inside the pill than other glass chips. */

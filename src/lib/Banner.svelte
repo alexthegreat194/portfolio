@@ -73,11 +73,11 @@
 
 <!-- Banner -->
 <div
-    class="
+	class="
     h-screen w-screen flex justify-center items-center
     bg-pose bg-no-repeat bg-cover bg-center bg-blend-overlay bg-opacity-25 bg-fixed"
-    style="background-image: url('{background}');"
-    id="banner"
+	style="background-image: url('{background}');"
+	id="banner"
 >
     <div
         id="banner-container"
