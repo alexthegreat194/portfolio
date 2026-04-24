@@ -25,7 +25,7 @@
 	);
 </script>
 
-<section id="experience" style="padding: 0 var(--v2-page-gutter) var(--v2-section-y);">
+<section id="experience" style="padding:  var(--v2-section-y) var(--v2-page-gutter) var(--v2-section-y);">
 	<!-- Section header -->
 	<div
 		style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; flex-wrap: wrap; gap: 16px;"
@@ -39,7 +39,7 @@
 				Experience
 			</div>
 			<div
-				style="font-size: 40px; font-weight: 700; letter-spacing: -1.2px; margin-top: 10px; line-height: 1.05;"
+				style="font-size: 40px; font-weight: 700; letter-spacing: -1.2px; margin-top: 10px; line-height: 1.14; padding-top: 0.04em;"
 			>
 				Work & projects, on one line.
 			</div>
@@ -70,9 +70,9 @@
 		style="background: #1a1714; border: 1px solid #2c2823; border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.35); padding: var(--v2-card-pad-lg); position: relative;"
 	>
 		<!-- Vertical line -->
-		<div
-			style="position: absolute; left: 198px; top: var(--v2-card-pad-lg); bottom: var(--v2-card-pad-lg); width: 1px; background: #3a352f;"
-		></div>
+		<!-- <div
+			style="position: absolute; left: 193px; top: var(--v2-card-pad-lg); bottom: var(--v2-card-pad-lg); width: 1px; background: #3a352f;"
+		></div> -->
 
 		{#each items as it, i}
 			<div

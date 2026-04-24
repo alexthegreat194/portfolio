@@ -321,10 +321,6 @@
 		</SkillCard>
 
 	</div>
-
-	<div style="margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(245,240,234,0.38);text-align:center;">
-		hover to illustrate
-	</div>
 </section>
 
 <style>

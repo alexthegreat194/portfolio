@@ -11,11 +11,12 @@
 - [x] remove filter from deseign in selected work and add same filters as expereience section
 - [x] wework homepage text
 - [ ] design writing section
-- [ ] make projects collection
-- [ ] timeline collection
-- [ ] experience header padding fix
-- [ ] experience dot needs to be fixed
-- [ ] writing section needs to be added behind a feature flag
+- [x] make projects collection
+- [x] timeline collection
+- [x] experience header padding fix
+- [x] experience dot needs to be fixed
+- [x] writing section needs to be added behind a feature flag
 - [ ] move old icons to new stuff
 - [ ] animation and fade in to all elements
 - [ ] design system form button and filters, anything repeated 
+- [ ] add line back in expereiences and fix line

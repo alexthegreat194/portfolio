@@ -1,6 +1,8 @@
 <svelte:options runes={false} />
 
 <script>
+	import { FEATURE_FLAGS } from '../feature-flags';
+
 	const posts = [
 		{
 			d: 'Apr 2026',
@@ -23,7 +25,10 @@
 	];
 </script>
 
-<section id="writing" style="padding: 0 var(--v2-page-gutter) var(--v2-section-y);">
+<section
+	id="writing"
+	style="padding: 0 var(--v2-page-gutter) var(--v2-section-y); display: {FEATURE_FLAGS.writing ? 'block' : 'none'};">
+	
 	<!-- Section header -->
 	<div
 		style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; flex-wrap: wrap; gap: 16px;"
