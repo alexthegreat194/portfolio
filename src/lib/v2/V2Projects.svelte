@@ -2,12 +2,66 @@
 
 <script>
 	import { animate, inView } from "motion";
-	import { onMount } from "svelte";
 	
 	import projects from '../../../data/projects.json';
 	import V2FilterPills from './V2FilterPills.svelte';
 
+	const publicBase = import.meta.env.BASE_URL;
+
+	function previewSrc(/** @type {string} */ path) {
+		if (!path) return path;
+		const trimmed = path.replace(/^\//, '');
+		return publicBase + trimmed;
+	}
+
 	let filter = 'all';
+	/** @type {Record<string, boolean>} */
+	let previewLoaded = {};
+	/** @type {Record<string, boolean>} */
+	let previewError = {};
+
+	function onPreviewLoad(name) {
+		previewLoaded = { ...previewLoaded, [name]: true };
+	}
+	function onPreviewError(name) {
+		previewError = { ...previewError, [name]: true };
+	}
+
+	/**
+	 * Browsers often finish loading (or fail) before `on:load` runs after
+	 * hydration, especially from cache. Handle `img.complete` immediately.
+	 * @param {HTMLImageElement} node
+	 * @param {string} name
+	 */
+	function bindPreviewState(node, name) {
+		const onLoad = () => onPreviewLoad(name);
+		const onErr = () => onPreviewError(name);
+
+		if (node instanceof HTMLImageElement) {
+			if (node.complete) {
+				if (node.naturalWidth > 0) onLoad();
+				else onErr();
+			} else {
+				node.addEventListener('load', onLoad, { once: true });
+				node.addEventListener('error', onErr, { once: true });
+			}
+		}
+	}
+
+	/**
+	 * Per-node inView so cards created after a filter change are still animated.
+	 * inView() with a string selector in onMount only ever watched first paint.
+	 * @param {HTMLElement} node
+	 */
+	function projectCardEntrance(node) {
+		const stop = inView(
+			node,
+			(/** @type {HTMLElement} */ el) => {
+				animate(el, { opacity: 1, scale: 1 }, { duration: 0.5, ease: "easeOut" });
+			}
+		);
+		return { destroy: stop };
+	}
 
 	$: filterOptions = [
 		{ value: 'all', label: 'All', count: projects.length },
@@ -32,15 +86,6 @@
 		filter === 'all'
 			? projects
 			: projects.filter((p) => p.segment === filter);
-
-	onMount(() => {
-        inView(".project-container", (element) => {
-            animate(element,
-				{ opacity: 1, scale: 1 },
-				{ duration: 0.5, ease: "easeOut" }
-			);
-        });
-    });
 </script>
 
 <section
@@ -70,15 +115,38 @@
 
 	{#if visible.length > 0}
 		<div class="grid grid-cols-2 gap-[var(--v2-grid-gap)]">
-			{#each visible as p (p.name)}
+			{#each visible as p (p.name + '::' + filter)}
 				<div
+					use:projectCardEntrance
 					class="project-container opacity-0 scale-50
 					bg-[#1a1714] border border-[#2c2823] rounded-[14px] shadow-[0_8px_24px_rgba(0,0,0,0.35)] overflow-hidden flex flex-col"
 				>
 					<div
-						class="h-[180px] border-b border-[#2c2823] flex items-center justify-center text-[#f5f0ea61] font-mono text-[11px] tracking-[0.4px] bg-[repeating-linear-gradient(135deg,_#2c2823_0_10px,_#1f1c19_10px_20px)]"
+						class="group/preview relative h-[180px] border-b border-[#2c2823] overflow-hidden shrink-0 bg-[#0f0e0c]"
 					>
-						{p.name} · preview
+						<div
+							class="absolute inset-0 z-[1] flex items-center justify-center text-[#f5f0ea61] font-mono text-[11px] tracking-[0.4px] bg-[repeating-linear-gradient(135deg,_#2c2823_0_10px,_#1f1c19_10px_20px)]
+							pointer-events-none transition-opacity duration-300 ease-out
+							{previewLoaded[p.name] && !previewError[p.name] ? 'opacity-0' : 'opacity-100'}"
+						>
+							{p.name} · preview
+						</div>
+						{#if p.preview && !previewError[p.name]}
+							<img
+								use:bindPreviewState={p.name}
+								src={previewSrc(p.preview)}
+								alt="{p.name} project preview"
+								loading="lazy"
+								class="absolute inset-0 z-0
+								h-full w-full min-h-0 min-w-0
+								object-cover object-top
+								grayscale
+								transition-[opacity,transform,filter] duration-300 ease-out
+								will-change-transform
+								group-hover/preview:scale-[1.04] group-hover/preview:grayscale-0
+								{previewLoaded[p.name] ? 'opacity-100' : 'opacity-0'}"
+							/>
+						{/if}
 					</div>
 
 					<div class="p-[var(--v2-card-pad-lg)]">

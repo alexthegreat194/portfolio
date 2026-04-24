@@ -2,6 +2,7 @@
 	{
 		"name": "Forge PT",
 		"segment": "web",
+		"preview": "/media/previews/ptforge.png",
 		"techStack": "Webflow",
 		"description": "A Freelance project developed for Dr. Ming is a physical therapist. Though bringing you back to a healthy condition is important, his focus is bringing athletes back to a competitive level.",
 		"tags": ["Webflow", "CMS", "Responsive"],
@@ -12,6 +13,7 @@
 	{
 		"name": "Doink",
 		"segment": "app",
+		"preview": "/media/previews/doink.png",
 		"techStack": "Express.js/React",
 		"description": "Doink! is a group management tool designed to assist friend groups in effectively managing their finances, recording social moments, and keeping track of shared shopping lists.",
 		"tags": ["React", "Express", "MongoDB"],
@@ -22,6 +24,7 @@
 	{
 		"name": "Actichat",
 		"segment": "app",
+		"preview": "/media/previews/actichat.png",
 		"techStack": "Flask",
 		"description": "A chat app that allows users to create rooms and chat with each other. Users can send links to each other for easy access ",
 		"tags": ["Flask", "WebSockets", "Redis"],
@@ -32,6 +35,7 @@
 	{
 		"name": "Emberblade",
 		"segment": "oss",
+		"preview": "/media/previews/emberblade.png",
 		"techStack": "C++/SFML",
 		"description": "Built a complete 2D top-down game with tile-based world, interactive systems (inventory, crafting, combat), and collision/damage mechanics.",
 		"tags": ["C++", "SFML", "Game dev"],
@@ -42,6 +46,7 @@
 	{
 		"name": "Vidvault",
 		"segment": "oss",
+		"preview": "/media/previews/vidvault.png",
 		"techStack": "Golang/Docker",
 		"description": "a local video gallery server in Go with an embedded web UI for organizing, searching, and streaming videos.",
 		"tags": ["Go", "HTTP", "Docker"],
