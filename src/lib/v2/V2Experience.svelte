@@ -2,14 +2,23 @@
 
 <script>
 	import timeline from '../../../data/timeline.json';
+	import V2FilterPills from './V2FilterPills.svelte';
 
 	let filter = 'all';
 
-	$: counts = {
-		all: timeline.length,
-		work: timeline.filter((i) => i.category === 'work').length,
-		side: timeline.filter((i) => i.category === 'side').length,
-	};
+	$: filterOptions = [
+		{ value: 'all', label: 'All', count: timeline.length },
+		{
+			value: 'work',
+			label: 'Professional',
+			count: timeline.filter((i) => i.category === 'work').length
+		},
+		{
+			value: 'side',
+			label: 'Side projects',
+			count: timeline.filter((i) => i.category === 'side').length
+		}
+	];
 
 	$: items = (filter === 'all' ? timeline : timeline.filter((i) => i.category === filter)).sort(
 		(a, b) => b.sortOrder - a.sortOrder
@@ -54,40 +63,7 @@
 		</div>
 	</div>
 
-	<!-- Filter pills -->
-	<div style="display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap;">
-		{#each [['all', 'All', counts.all], ['work', 'Professional', counts.work], ['side', 'Side projects', counts.side]] as [val, label, count]}
-			<button
-				on:click={() => (filter = val)}
-				style="
-          background: {filter === val ? 'rgba(185,28,28,0.22)' : 'rgba(30,26,22,0.42)'};
-          backdrop-filter: blur(22px) saturate(1.4);
-          -webkit-backdrop-filter: blur(22px) saturate(1.4);
-          border: 1px solid {filter === val ? '#b91c1c' : 'rgba(255,255,255,0.10)'};
-          box-shadow: 0 4px 24px rgba(0,0,0,0.4);
-          border-radius: 999px;
-          padding: var(--v2-pill-pad-y) var(--v2-pill-pad-x);
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          font-family: 'Inter', system-ui, sans-serif;
-          font-size: 12px;
-          font-weight: 600;
-          color: {filter === val ? '#f5f0ea' : 'rgba(245,240,234,0.62)'};
-          cursor: pointer;
-        "
-			>
-				{label}
-				<span
-					style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: {filter === val
-						? '#f5f0ea'
-						: 'rgba(245,240,234,0.42)'}; background: {filter === val
-						? 'rgba(0,0,0,0.25)'
-						: 'rgba(255,255,255,0.06)'}; padding: 1px 6px; border-radius: 999px; letter-spacing: 0.5px;"
-				>{count}</span>
-			</button>
-		{/each}
-	</div>
+	<V2FilterPills bind:selected={filter} options={filterOptions} />
 
 	<!-- Timeline -->
 	<div

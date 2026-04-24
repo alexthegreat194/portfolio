@@ -7,9 +7,9 @@
 - [ ] convert v2 to tialwind
 
 ## V2 Checklist:
-- [ ] add app padding
-- [ ] remove filter from deseign in selected work and add same filters as expereience section
-- [ ] wework homepage text
+- [x] add app padding
+- [x] remove filter from deseign in selected work and add same filters as expereience section
+- [x] wework homepage text
 - [ ] design writing section
 - [ ] make projects collection
 - [ ] timeline collection
@@ -17,3 +17,5 @@
 - [ ] experience dot needs to be fixed
 - [ ] writing section needs to be added behind a feature flag
 - [ ] move old icons to new stuff
+- [ ] animation and fade in to all elements
+- [ ] design system form button and filters, anything repeated 

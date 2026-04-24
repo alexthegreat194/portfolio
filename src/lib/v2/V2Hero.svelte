@@ -97,7 +97,7 @@
 		<div
 			style="font-size: 18px; color: rgba(245,240,234,0.62); font-weight: 300; max-width: 34rem; padding: 0 var(--v2-card-pad); line-height: 1.55;"
 		>
-			Software Engineer · building small, honest things on the web
+			Software Engineer (Backend)
 		</div>
 
 		<!-- Profile circle -->
