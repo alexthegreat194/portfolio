@@ -37,7 +37,7 @@
     <Project
         title="Emberblade"
         tool="C++/SFML"
-        description="Built a complete 2D top-down game with tile-based world, interactive systems (inventory, crafting, combat), and collision/damage mechanics. Handled architecture from the ground up: game loop, rendering pipeline, and subsystem design."
+        description="Built a complete 2D top-down game with tile-based world, interactive systems (inventory, crafting, combat), and collision/damage mechanics."
         visit=""
         repo="https://github.com/alexthegreat194/Emberblade"
     />
@@ -45,7 +45,7 @@
     <Project
         title="Vidvault"
         tool="Golang/Docker"
-        description="a local video gallery server in Go with an embedded web UI for organizing, searching, and streaming videos with range-request support for smooth seeking. Architected as a zero-dependency Go binary with compiled frontend assets and HTTP APIs for file management; includes Docker containerization."
+        description="a local video gallery server in Go with an embedded web UI for organizing, searching, and streaming videos."
         visit=""
         repo="https://github.com/alexthegreat194/vidvault"
     />
