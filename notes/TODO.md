@@ -16,7 +16,9 @@
 - [x] experience header padding fix
 - [x] experience dot needs to be fixed
 - [x] writing section needs to be added behind a feature flag
-- [ ] move old icons to new stuff
+- [x] move old icons to new stuff
 - [ ] animation and fade in to all elements
 - [ ] design system form button and filters, anything repeated 
 - [ ] add line back in expereiences and fix line
+
+- [ ] Projects section

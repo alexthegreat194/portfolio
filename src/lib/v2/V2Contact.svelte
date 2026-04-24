@@ -34,7 +34,8 @@
 					href="mailto:alexharlan194@gmail.com"
 					style="background: #b91c1c; border: 1px solid #b91c1c; box-shadow: 0 6px 20px rgba(185,28,28,0.4); border-radius: 999px; padding: calc(var(--v2-pill-pad-y) + 0.2rem) calc(var(--v2-pill-pad-x) + 0.85rem); display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; font-family: 'Inter', system-ui, sans-serif;"
 				>
-					<span>✉</span> Email
+					<img src="/media/white-gmail.png" alt="Email" width="16" height="16">
+					Email
 				</a>
 
 				<!-- GitHub -->
@@ -43,7 +44,8 @@
 					target="_blank"
 					style="background: rgba(30,26,22,0.42); backdrop-filter: blur(22px) saturate(1.4); -webkit-backdrop-filter: blur(22px) saturate(1.4); border: 1px solid rgba(255,255,255,0.10); box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08); border-radius: 999px; padding: calc(var(--v2-pill-pad-y) + 0.2rem) calc(var(--v2-pill-pad-x) + 0.85rem); display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; color: #f5f0ea; text-decoration: none; font-family: 'Inter', system-ui, sans-serif;"
 				>
-					<span>◉</span> GitHub
+					<img src="/media/white-github.png" alt="GitHub" width="16" height="16">
+					GitHub
 				</a>
 
 				<!-- LinkedIn -->
@@ -52,7 +54,8 @@
 					target="_blank"
 					style="background: rgba(30,26,22,0.42); backdrop-filter: blur(22px) saturate(1.4); -webkit-backdrop-filter: blur(22px) saturate(1.4); border: 1px solid rgba(255,255,255,0.10); box-shadow: 0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08); border-radius: 999px; padding: calc(var(--v2-pill-pad-y) + 0.2rem) calc(var(--v2-pill-pad-x) + 0.85rem); display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; color: #f5f0ea; text-decoration: none; font-family: 'Inter', system-ui, sans-serif;"
 				>
-					<span style="font-size: 11px; font-weight: 800;">in</span> LinkedIn
+					<img src="/media/white-linkedin.png" alt="LinkedIn" width="16" height="16">
+					LinkedIn
 				</a>
 			</div>
 		</div>

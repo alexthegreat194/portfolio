@@ -32,7 +32,14 @@
 		style="position: absolute; top: 2800px; left: 120px; width: 280px; height: 280px; border-radius: 50%; background: #a855f7; filter: blur(90px); opacity: 0.14; pointer-events: none; z-index: 0;"
 	></div>
 
-	<V2Nav />
+	<V2Nav
+		links={[
+			{ label: 'Work', href: '#work', active: true },
+			{ label: 'About', href: '#about' },
+			{ label: 'Experience', href: '#experience' },
+			{ label: 'Contact', href: '#contact' },
+		]}
+	/>
 	<V2Hero />
 	<V2Projects />
 	<V2About />

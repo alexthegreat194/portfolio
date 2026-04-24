@@ -6,39 +6,83 @@
 
 	/** @type {{ value: string; label: string; count: number }[]} */
 	export let options = [];
+	
+	let hoveredValue = null;
+
+	function handleGroupHoverStart(opt) {
+		if (selected !== opt.value) hoveredValue = opt.value;
+	}
+	function handleGroupHoverEnd(opt) {
+		if (hoveredValue === opt.value) hoveredValue = null;
+	}
 </script>
 
-<div style="display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap;">
+<!-- 
+	Assign as many classes as possible with Tailwind. 
+	Use style bindings for custom, non-Tailwind palette colors.
+	TODO: Ideally, migrate custom colors to Tailwind config for pure utility classes.
+-->
+<div class="flex flex-wrap gap-2 mb-[18px]">
 	{#each options as opt (opt.value)}
 		<button
 			type="button"
 			on:click={() => (selected = opt.value)}
-			style="
-          background: {selected === opt.value ? 'rgba(185,28,28,0.22)' : 'rgba(30,26,22,0.42)'};
-          backdrop-filter: blur(22px) saturate(1.4);
-          -webkit-backdrop-filter: blur(22px) saturate(1.4);
-          border: 1px solid {selected === opt.value ? '#b91c1c' : 'rgba(255,255,255,0.10)'};
-          box-shadow: 0 4px 24px rgba(0,0,0,0.4);
-          border-radius: 999px;
-          padding: var(--v2-pill-pad-y) var(--v2-pill-pad-x);
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          font-family: 'Inter', system-ui, sans-serif;
-          font-size: 12px;
-          font-weight: 600;
-          color: {selected === opt.value ? '#f5f0ea' : 'rgba(245,240,234,0.62)'};
-          cursor: pointer;
-        "
+			on:mouseenter={() => handleGroupHoverStart(opt)}
+			on:focus={() => handleGroupHoverStart(opt)}
+			on:mouseleave={() => handleGroupHoverEnd(opt)}
+			on:blur={() => handleGroupHoverEnd(opt)}
+			class={`inline-flex items-center gap-2 rounded-full border font-inter text-[12px] font-semibold transition-colors shadow-[0_4px_24px_rgba(0,0,0,0.4)] backdrop-blur-[22px] saturate-[1.4] cursor-pointer px-[var(--v2-pill-pad-x)] py-[var(--v2-pill-pad-y)]${
+				selected === opt.value
+					? " ring-1 ring-[#b91c1c]"
+					: hoveredValue === opt.value
+						? " ring-1 ring-[#b91c1c]"
+						: ""
+			} `}
+			style={`
+				${selected === opt.value
+					? `
+						background: rgba(185,28,28,0.22);
+						border-color: #b91c1c;
+						color: #f5f0ea;
+					`
+					: hoveredValue === opt.value
+						? `
+							background: rgba(185,28,28,0.11);
+							border-color: #b91c1c;
+							color: #f5f0ea;
+						`
+						: `
+							background: rgba(30,26,22,0.42);
+							border-color: rgba(255,255,255,0.10);
+							color: rgba(245,240,234,0.62);
+						`
+				}
+			`}
 		>
 			{opt.label}
+			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<span
-				style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: {selected === opt.value
-					? '#f5f0ea'
-					: 'rgba(245,240,234,0.42)'}; background: {selected === opt.value
-					? 'rgba(0,0,0,0.25)'
-					: 'rgba(255,255,255,0.06)'}; padding: 1px 6px; border-radius: 999px; letter-spacing: 0.5px;"
-			>{opt.count}</span>
+				class="rounded-full px-[6px] py-[1px] text-[10px] leading-4 tracking-[0.5px] font-jetbrains-mono pill-count"
+				style={`
+					${selected === opt.value
+						? `
+							background: rgba(0,0,0,0.25);
+							color: #f5f0ea;
+						`
+						: hoveredValue === opt.value
+							? `
+								background: rgba(0,0,0,0.17);
+								color: #f5f0ea;
+							`
+							: `
+								background: rgba(255,255,255,0.06);
+								color: rgba(245,240,234,0.42);
+							`
+					}
+				`}
+			>
+				{opt.count}
+			</span>
 		</button>
 	{/each}
 </div>
