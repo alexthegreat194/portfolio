@@ -1,6 +1,7 @@
 <svelte:options runes={false} />
 
 <script>
+	import { animate, inView } from 'motion';
 	import timeline from '../../../data/timeline.json';
 	import V2FilterPills from './V2FilterPills.svelte';
 
@@ -23,6 +24,22 @@
 	$: items = (filter === 'all' ? timeline : timeline.filter((i) => i.category === filter)).sort(
 		(a, b) => b.sortOrder - a.sortOrder
 	);
+
+	/**
+	 * Animate each timeline row as it enters viewport.
+	 * Replays on filter changes because rows are keyed by filter.
+	 * @param {HTMLElement} node
+	 */
+	function experienceRowEntrance(node) {
+		const stop = inView(node, (el) => {
+			animate(
+				el,
+				{ opacity: 1, transform: 'translateY(0px)' },
+				{ duration: 0.45, ease: 'easeOut' }
+			);
+		});
+		return { destroy: stop };
+	}
 </script>
 
 <section
@@ -58,14 +75,16 @@
 
 	<!-- Timeline -->
 	<div
-		class="flex flex-col gap-[18px] bg-[#1a1714] border border-[#2c2823] rounded-[14px] shadow-[0_8px_24px_rgba(0,0,0,0.35)] p-[var(--v2-card-pad-lg)] relative"
+		class="flex flex-col gap-[24px] bg-[#1a1714] border border-[#2c2823] rounded-[14px] shadow-[0_8px_24px_rgba(0,0,0,0.35)] p-[var(--v2-card-pad-lg)] relative"
 	>
 		<!-- Vertical line -->
 		<!-- <div class="absolute left-[193px] top-[var(--v2-card-pad-lg)] bottom-[var(--v2-card-pad-lg)] w-px bg-[#3a352f]"></div> -->
 
-		{#each items as it, i}
+		{#each items as it, i (it.organization + '::' + it.dateRange + '::' + filter)}
 			<div
-				class="grid grid-cols-[100px_20px_1fr]  lg:grid-cols-[150px_20px_1fr] gap-[18px] pb-[{i === items.length - 1 ? 0 : 26}px] items-start"
+				use:experienceRowEntrance
+				class=" opacity-0 transform-translate-y-14
+				grid grid-cols-[100px_20px_1fr]  lg:grid-cols-[150px_20px_1fr] gap-[18px] pb-[{i === items.length - 1 ? 0 : 26}px] items-start"
 			>
 				<!-- Date + kind -->
 				<div class="pt-[2px]">
