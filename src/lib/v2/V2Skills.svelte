@@ -1,6 +1,7 @@
 <svelte:options runes={false} />
 
 <script>
+	import { ArrowRight } from '@lucide/svelte';
 	import SkillCard from './SkillCard.svelte';
 
 	const netNodes = [
@@ -69,30 +70,32 @@
 
 <section
 	id="skills"
-	style="padding: var(--v2-section-y-tight) var(--v2-page-gutter) var(--v2-section-y); background: #0b0a09; color: #f5f0ea; font-family: 'Inter', system-ui, sans-serif;"
+	class="px-[var(--v2-page-gutter)] pb-[var(--v2-section-y)] pt-[var(--v2-section-y-tight)]
+		bg-[#0b0a09] text-[#f5f0ea] font-sans"
 >
-	<div style="margin-bottom: 32px;">
+	<div class="mb-8">
 		<div
-			style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,234,0.62); display: flex; align-items: center; gap: 10px;"
+			class="flex items-center gap-[10px] font-mono uppercase tracking-[0.12em] text-[11px] text-[rgba(245,240,234,0.62)]"
 		>
-			<span style="color: #b91c1c; font-weight: 700;">02b</span>
-			<span style="width: 18px; height: 1px; background: #3a352f; display: inline-block;"></span>
+			<span class="text-[#b91c1c] font-bold">02b</span>
+			<span class="inline-block w-[18px] h-px bg-[#3a352f]"></span>
 			What I actually do
 		</div>
 		<div
-			style="font-size: 40px; font-weight: 700; letter-spacing: -1.2px; margin-top: 10px; line-height: 1.05;"
+			class="mt-[10px] text-[40px] font-bold leading-[1.05] tracking-tight"
+			style="letter-spacing: -1.2px"
 		>
-			Backend systems, from <span style="color: #b91c1c; font-style: italic;">first principles</span>.
+			Backend systems, from <span class="text-[#b91c1c] italic">first principles</span>
 		</div>
 		<div
-			style="font-size: 15px; color: rgba(245,240,234,0.62); margin-top: 10px; max-width: 620px; line-height: 1.55;"
+			class="mt-[10px] max-w-[620px] text-[15px] leading-[1.55] text-[rgba(245,240,234,0.62)]"
 		>
 			Hover any card to see the system under the hood. Most of these came from two production years at High
 			Fidelity, plus freelance client work.
 		</div>
 	</div>
 
-	<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--v2-grid-gap);">
+	<div class="grid lg:grid-cols-3 grid-cols-2 gap-[var(--v2-grid-gap)]">
 
 		<!-- 1. Connection-score algorithm — network graph -->
 		<SkillCard
@@ -101,7 +104,7 @@
 			claim="Graph-based match scoring with full test coverage & docs."
 			let:hovered
 		>
-			<svg viewBox="0 0 300 220" style="width: 100%; height: 100%;">
+			<svg viewBox="0 0 300 220" class="w-full h-full">
 				{#each netEdges as [a, b]}
 					<line
 						x1={netNodes[a].x} y1={netNodes[a].y}
@@ -131,16 +134,18 @@
 			accent="#3b82f6"
 			let:hovered
 		>
-			<div style="width:100%;height:100%;display:flex;align-items:flex-end;padding:20px 18px 60px;gap:3px;">
+			<div class="w-full h-full flex items-end gap-[3px] px-[18px] pt-[20px] pb-[60px]">
 				{#each tsBars as bar, i}
-					<div style="
-						flex: 1; height: {bar.h}%;
-						background: {bar.hot ? '#b91c1c' : 'linear-gradient(180deg,#b91c1c88,#b91c1c22)'};
-						border-radius: 2px 2px 0 0;
-						transform: scaleY({hovered ? 1 : 0.5}); transform-origin: bottom;
-						transition: transform .5s cubic-bezier(.2,.8,.2,1) {i * 15}ms, background .3s;
-						opacity: {hovered ? 1 : 0.6};
-					"></div>
+					<div class="flex-1 rounded-t-[2px]"
+						style="
+							height: {bar.h}%;
+							background: {bar.hot ? '#b91c1c' : 'linear-gradient(180deg,#b91c1c88,#b91c1c22)'};
+							transform: scaleY({hovered ? 1 : 0.5});
+							transform-origin: bottom;
+							transition: transform .5s cubic-bezier(.2,.8,.2,1) {i * 15}ms, background .3s;
+							opacity: {hovered ? 1 : 0.6};
+						"
+					></div>
 				{/each}
 			</div>
 		</SkillCard>
@@ -153,23 +158,35 @@
 			accent="#f59e0b"
 			let:hovered
 		>
-			<div style="width:100%;height:100%;padding:22px;display:flex;gap:12px;">
-				<div style="flex:1;display:flex;flex-direction:column;gap:6px;">
-					<div style="font-size:9px;color:rgba(245,240,234,0.62);font-family:'JetBrains Mono',monospace;">BEFORE</div>
+			<div class="w-full h-full flex gap-[12px] p-[22px]">
+				<div class="flex-1 flex flex-col gap-[6px]">
+					<div class="text-[9px] text-[rgba(245,240,234,0.62)] font-mono">BEFORE</div>
 					{#each [0, 1, 2] as idx}
-						<div style="height:8px;background:#221f1c;border-radius:4px;overflow:hidden;position:relative;">
-							<div style="position:absolute;inset:0;width:{hovered ? '100%' : `${30 + idx * 20}%`};background:linear-gradient(90deg,transparent,#f59e0baa,transparent);transition:width {1.2 + idx * 0.3}s;"></div>
+						<div class="h-2 bg-[#221f1c] rounded-[4px] overflow-hidden relative">
+							<div
+								class="absolute inset-0"
+								style="
+									width: {hovered ? '100%' : `${30 + idx * 20}%`};
+									background: linear-gradient(90deg,transparent,#f59e0baa,transparent);
+									transition:width {1.2 + idx * 0.3}s;
+								"
+							></div>
 						</div>
 					{/each}
-					<div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#f59e0b;margin-top:2px;">1.8s · 2.4s · 3.1s</div>
+					<div class="font-mono text-[9px] text-[#f59e0b] mt-[2px]">1.8s · 2.4s · 3.1s</div>
 				</div>
-				<div style="font-family:'JetBrains Mono',monospace;color:#b91c1c;font-size:16px;align-self:center;font-weight:700;">→</div>
-				<div style="flex:1;display:flex;flex-direction:column;gap:6px;">
-					<div style="font-size:9px;color:rgba(245,240,234,0.62);font-family:'JetBrains Mono',monospace;">AFTER (CACHED)</div>
+				<div class="pt-[20%] font-mono text-[#b91c1c] text-[16px] font-bold">
+					<ArrowRight class="w-4 h-4" />
+				</div>
+				<div class="flex-1 flex flex-col gap-[6px]">
+					<div class="text-[9px] text-[rgba(245,240,234,0.62)] font-mono">AFTER (CACHED)</div>
 					{#each [0, 1, 2] as idx}
-						<div style="height:8px;background:#b91c1c;border-radius:4px;opacity:{hovered ? 1 : 0.3};transition:opacity .15s {idx * 60}ms;"></div>
+						<div
+							class="h-2 bg-[#b91c1c] rounded-[4px]"
+							style="opacity: {hovered ? 1 : 0.3}; transition:opacity .15s {idx * 60}ms;"
+						></div>
 					{/each}
-					<div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#22c55e;margin-top:2px;">40ms · 38ms · 42ms</div>
+					<div class="font-mono text-[9px] text-[#22c55e] mt-[2px]">40ms · 38ms · 42ms</div>
 				</div>
 			</div>
 		</SkillCard>
@@ -181,13 +198,13 @@
 			claim="Killed race conditions in high-traffic MongoDB writes."
 			let:hovered
 		>
-			<div style="position:relative;width:100%;height:100%;padding:20px;">
-				<div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:12px;background:#221f1c;border:1.5px solid #b91c1c;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;color:#b91c1c;font-weight:700;z-index:3;">TX</div>
+			<div class="relative w-full h-full p-[20px]">
+				<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[54px] h-[54px] rounded-[12px] bg-[#221f1c] border border-[#b91c1c] flex items-center justify-center font-mono text-[9px] text-[#b91c1c] font-bold z-[3]">TX</div>
 				{#if hovered}
-					<div class="v2-spin" style="position:absolute;left:50%;top:50%;width:80px;height:80px;border-radius:50%;border:1px dashed #b91c1c;opacity:0.5;margin-left:-40px;margin-top:-40px;"></div>
+					<div class="v2-spin absolute left-1/2 top-1/2 w-[80px] h-[80px] rounded-full border border-dashed border-[#b91c1c] opacity-50 -ml-[40px] -mt-[40px]"></div>
 				{/if}
 				{#each [{c:'#b91c1c',top:'20%',anim:'v2-slide0'},{c:'#3b82f6',top:'55%',anim:'v2-slide1'},{c:'#f59e0b',top:'85%',anim:'v2-slide2'}] as lane}
-					<div style="position:absolute;top:{lane.top};left:20px;right:20px;height:2px;background:linear-gradient(90deg,transparent,{lane.c},transparent);opacity:{hovered ? 0.7 : 0.2};transition:opacity .3s;">
+					<div class="absolute left-[20px] right-[20px] h-[2px]" style="top:{lane.top}; background:linear-gradient(90deg,transparent,{lane.c},transparent); opacity:{hovered ? 0.7 : 0.2}; transition:opacity .3s;">
 						{#if hovered}
 							<div class={lane.anim} style="position:absolute;top:-4px;width:10px;height:10px;border-radius:50%;background:{lane.c};box-shadow:0 0 10px {lane.c};"></div>
 						{/if}
@@ -199,22 +216,50 @@
 		<!-- 5. WebSocket — client connection pulse -->
 		<SkillCard
 			tag="REALTIME"
-			title="WebSocket session mgmt"
+			title="WebSocket session management"
 			claim="Concurrent room routing with invite-link joins."
 			accent="#3b82f6"
 			let:hovered
 		>
-			<div style="width:100%;height:100%;position:relative;padding:20px;">
-				<div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:8px;background:#b91c1c;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:#fff;font-weight:700;z-index:2;">WS</div>
-				{#each [{x:'10%',y:'18%'},{x:'80%',y:'12%'},{x:'10%',y:'72%'},{x:'80%',y:'78%'}] as c}
-					<div style="position:absolute;left:{c.x};top:{c.y};width:18px;height:14px;border-radius:3px;background:#221f1c;border:1px solid rgba(245,240,234,0.62);"></div>
+			<svg class="w-full h-full pointer-events-none" viewBox="0 0 300 260" aria-hidden="true">
+				<g
+					stroke="#b91c1c"
+					stroke-width="1"
+					stroke-dasharray="4 3"
+					fill="none"
+					style="opacity:{hovered ? 0.6 : 0.2};transition:opacity .3s;"
+				>
+					<line x1="46" y1="122" x2="254" y2="122" />
+					<line x1="46" y1="35" x2="46" y2="165" />
+					<line x1="254" y1="25" x2="254" y2="165" />
+				</g>
+
+				{#each [[37,34],[245,20],[37,164],[245,156]] as [x, y]}
+					<rect
+						x={x}
+						y={y}
+						width="18"
+						height="14"
+						rx="3"
+						fill="#221f1c"
+						stroke="rgba(245,240,234,0.62)"
+						stroke-width="1"
+					/>
 				{/each}
-				<svg style="position:absolute;inset:0;pointer-events:none;width:100%;height:100%;" viewBox="0 0 300 260" preserveAspectRatio="none">
-					{#each [[38,38,150,130],[262,28,150,130],[38,196,150,130],[262,206,150,130]] as [x1,y1,x2,y2]}
-						<line {x1} {y1} {x2} {y2} stroke="#b91c1c" stroke-width="1" stroke-dasharray="4 3" style="opacity:{hovered ? 0.6 : 0.2};transition:opacity .3s;" />
-					{/each}
-				</svg>
-			</div>
+
+				<rect x="132" y="104" width="36" height="36" rx="8" fill="#b91c1c" />
+				<text
+					x="150"
+					y="126"
+					text-anchor="middle"
+					font-family="'JetBrains Mono', monospace"
+					font-size="10"
+					font-weight="700"
+					fill="#ffffff"
+				>
+					WS
+				</text>
+			</svg>
 		</SkillCard>
 
 		<!-- 6. REST API endpoints list -->
@@ -225,14 +270,17 @@
 			accent="#22c55e"
 			let:hovered
 		>
-			<div style="width:100%;height:100%;padding:18px;display:flex;flex-direction:column;gap:5px;font-family:'JetBrains Mono',monospace;font-size:10px;">
+			<div class="w-full h-full flex flex-col gap-[5px] p-[18px] font-mono text-[10px]">
 				{#each apiEps as ep, i}
-					<div style="display:flex;gap:8px;padding:4px 8px;background:#221f1c;border-radius:3px;border:1px solid #2c2823;transform:{hovered ? 'translateX(0)' : 'translateX(-8px)'};opacity:{hovered ? 1 : 0.5};transition:transform .3s {i*40}ms,opacity .3s {i*40}ms;">
-						<span style="color:{ep.c};font-weight:700;min-width:48px;">{ep.m}</span>
-						<span style="color:#f5f0ea;">{ep.p}</span>
+					<div
+						class="flex gap-[8px] py-[4px] px-[8px] bg-[#221f1c] rounded-[3px] border border-[#2c2823]"
+						style="transform:{hovered ? 'translateX(0)' : 'translateX(-8px)'};opacity:{hovered ? 1 : 0.5};transition:transform .3s {i*40}ms,opacity .3s {i*40}ms;"
+					>
+						<span class="font-bold min-w-[48px]" style="color:{ep.c};">{ep.m}</span>
+						<span class="text-[#f5f0ea]">{ep.p}</span>
 					</div>
 				{/each}
-				<div style="font-size:9px;color:rgba(245,240,234,0.62);margin-top:2px;">+ 14 more endpoints</div>
+				<div class="text-[9px] text-[rgba(245,240,234,0.62)] mt-[2px]">+ 14 more endpoints</div>
 			</div>
 		</SkillCard>
 
@@ -243,16 +291,26 @@
 			claim="Matrix-driven authorization across resources."
 			let:hovered
 		>
-			<div style="width:100%;height:100%;padding:16px;display:flex;flex-direction:column;gap:4px;font-family:'JetBrains Mono',monospace;">
-				<div style="display:grid;grid-template-columns:60px repeat(4,1fr);gap:4px;font-size:9px;color:rgba(245,240,234,0.62);">
+			<div class="w-full h-full flex flex-col gap-[4px] p-[16px] font-mono">
+				<div class="grid grid-cols-[60px_repeat(4,minmax(0,1fr))] gap-[4px] text-[9px] text-[rgba(245,240,234,0.62)]">
 					<div></div>
-					{#each permPerms as p}<div style="text-align:center;">{p}</div>{/each}
+					{#each permPerms as p}
+						<div class="text-center">{p}</div>
+					{/each}
 				</div>
 				{#each permRoles as r, ri}
-					<div style="display:grid;grid-template-columns:60px repeat(4,1fr);gap:4px;">
-						<div style="font-size:10px;color:#f5f0ea;align-self:center;">{r}</div>
+					<div class="grid grid-cols-[60px_repeat(4,minmax(0,1fr))] gap-[4px]">
+						<div class="text-[10px] text-[#f5f0ea] self-center">{r}</div>
 						{#each permGrid[ri] as v, ci}
-							<div style="aspect-ratio:1;background:{v ? '#b91c1c' : '#221f1c'};border-radius:3px;border:1px solid {v ? '#b91c1c' : '#2c2823'};display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;opacity:{hovered ? 1 : 0.4};transition:opacity .3s {(ri*4+ci)*30}ms;">{v ? '✓' : ''}</div>
+							<div
+								class="aspect-square rounded-[3px] flex items-center justify-center text-white text-[11px] font-bold"
+								style="
+									background: {v ? '#b91c1c' : '#221f1c'};
+									border: 1px solid {v ? '#b91c1c' : '#2c2823'};
+									opacity: {hovered ? 1 : 0.4};
+									transition: opacity .3s {(ri*4+ci)*30}ms;
+								"
+							>{v ? '✓' : ''}</div>
 						{/each}
 					</div>
 				{/each}
@@ -267,11 +325,19 @@
 			accent="#f59e0b"
 			let:hovered
 		>
-			<div style="width:100%;height:100%;padding:22px;display:flex;align-items:center;gap:6px;">
+			<div class="w-full h-full flex items-center gap-[6px] p-[22px]">
 				{#each pipeStages as s, i}
-					<div style="flex:1;padding:14px 0;border-radius:6px;background:#221f1c;border:1.5px solid {hovered ? s.c : '#2c2823'};text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:{hovered ? s.c : 'rgba(245,240,234,0.62)'};font-weight:600;transition:border-color .3s {i*200}ms,color .3s {i*200}ms;">{s.n}</div>
+					<div
+						class="flex-1 py-[14px] rounded-[6px] bg-[#221f1c] text-center font-mono text-[10px] font-semibold"
+						style="border:1.5px solid {hovered ? s.c : '#2c2823'};color:{hovered ? s.c : 'rgba(245,240,234,0.62)'};transition:border-color .3s {i*200}ms,color .3s {i*200}ms;"
+					>
+						{s.n}
+					</div>
 					{#if i < pipeStages.length - 1}
-						<div style="width:10px;height:2px;background:{hovered ? '#b91c1c' : '#2c2823'};transition:background .3s {i*200+100}ms;flex-shrink:0;"></div>
+						<div
+							class="flex-shrink-0 h-[2px] w-[10px]"
+							style="background:{hovered ? '#b91c1c' : '#2c2823'};transition:background .3s {i*200+100}ms;"
+						></div>
 					{/if}
 				{/each}
 			</div>
@@ -285,13 +351,22 @@
 			accent="#a855f7"
 			let:hovered
 		>
-			<div style="width:100%;height:100%;padding:22px;display:flex;align-items:center;justify-content:center;gap:14px;">
+			<div class="w-full h-full flex items-center justify-center gap-[14px] p-[22px]">
 				{#each [{w:120,h:78},{w:64,h:86},{w:34,h:60}] as d, i}
-					<div style="width:{d.w}px;height:{d.h}px;border-radius:6px;border:1.5px solid #3a352f;background:#221f1c;padding:4px;transform:{hovered ? `translateY(${i*-2}px) scale(1)` : 'scale(0.9)'};opacity:{hovered ? 1 : 0.4};transition:transform .4s {i*100}ms,opacity .4s {i*100}ms;display:flex;flex-direction:column;gap:3px;">
-						<div style="height:6px;background:#b91c1c;border-radius:2px;width:60%;"></div>
-						<div style="height:3px;background:#3a352f;border-radius:2px;"></div>
-						<div style="height:3px;background:#3a352f;border-radius:2px;width:80%;"></div>
-						<div style="flex:1;background:repeating-linear-gradient(135deg,#1a1714 0 6px,#221f1c 6px 12px);border-radius:2px;margin-top:2px;"></div>
+					<div
+						class="rounded-[6px] border border-[#3a352f] bg-[#221f1c] p-[4px] flex flex-col gap-[3px]"
+						style="
+							width:{d.w}px;height:{d.h}px;
+							border-width:1.5px;
+							transform:{hovered ? `translateY(${i*-2}px) scale(1)` : 'scale(0.9)'};
+							opacity:{hovered ? 1 : 0.4};
+							transition:transform .4s {i*100}ms,opacity .4s {i*100}ms;
+						"
+					>
+						<div class="h-[6px] rounded-[2px] bg-[#b91c1c]" style="width:60%;"></div>
+						<div class="h-[3px] rounded-[2px] bg-[#3a352f]"></div>
+						<div class="h-[3px] rounded-[2px] bg-[#3a352f]" style="width:80%;"></div>
+						<div class="flex-1 rounded-[2px] mt-[2px]" style="background:repeating-linear-gradient(135deg,#1a1714 0 6px,#221f1c 6px 12px);"></div>
 					</div>
 				{/each}
 			</div>
@@ -304,19 +379,24 @@
 			claim="API · cache · data — designed from first principles."
 			let:hovered
 		>
-			<svg viewBox="0 0 300 230" style="width:100%;height:100%;">
+			<svg viewBox="0 0 300 230" class="w-full h-full">
 				{#each archLayers as l, i}
-					<rect x="60" y={l.y} width="180" height="40" rx="6" fill="#221f1c" stroke={hovered ? l.c : '#2c2823'} stroke-width="1.5" style="transition:stroke .3s {i*120}ms;" />
-					<text x="150" y={l.y+25} text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="13" font-weight="700" fill={hovered ? l.c : 'rgba(245,240,234,0.62)'} style="transition:fill .3s {i*120}ms;">{l.n}</text>
 					{#if i < archLayers.length - 1}
-						<line x1="150" y1={l.y+40} x2="150" y2={l.y+70} stroke="#b91c1c" stroke-width="1" stroke-dasharray="2 2" style="opacity:{hovered ? 0.7 : 0.2};transition:opacity .3s;" />
+						<!-- vertical line, under the boxes but above the ball -->
+						<line x1="150" y1={l.y+40} x2="150" y2={archLayers[i+1].y} stroke="#b91c1c" stroke-width="1" stroke-dasharray="2 2" style="opacity:{hovered ? 0.7 : 0.2};transition:opacity .3s;" />
 					{/if}
 				{/each}
 				{#if hovered}
+					<!-- ball, above the line but under the boxes -->
 					<circle r="5" fill="#22c55e">
-						<animateMotion dur="2.5s" repeatCount="indefinite" path="M 150 20 L 150 60 L 150 90 L 150 130 L 150 90 L 150 60 Z" />
+						<animateMotion dur="2.5s" repeatCount="indefinite" 
+							path="M 150 170 L 150 90 L 150 40" />
 					</circle>
 				{/if}
+				{#each archLayers as l, i}
+					<rect x="60" y={l.y} width="180" height="40" rx="6" fill="#221f1c" stroke={hovered ? l.c : '#2c2823'} stroke-width="1.5" style="transition:stroke .3s {i*120}ms;" />
+					<text x="150" y={l.y+25} text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="13" font-weight="700" fill={hovered ? l.c : 'rgba(245,240,234,0.62)'} style="transition:fill .3s {i*120}ms;">{l.n}</text>
+				{/each}
 			</svg>
 		</SkillCard>
 
