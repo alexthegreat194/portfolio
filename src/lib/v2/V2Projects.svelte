@@ -114,7 +114,7 @@
 	<V2FilterPills bind:selected={filter} options={filterOptions} />
 
 	{#if visible.length > 0}
-		<div class="grid grid-cols-2 gap-[var(--v2-grid-gap)]">
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-[var(--v2-grid-gap)]">
 			{#each visible as p (p.name + '::' + filter)}
 				<div
 					use:projectCardEntrance

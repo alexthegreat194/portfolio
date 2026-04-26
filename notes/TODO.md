@@ -22,9 +22,7 @@
 ### Lets get this done by Sunday
 
 ## Polish
-- [ ] rss feed
-- [ ] convert v2 to tialwind...
-- [ ] scale projects to one per row on small screen size
+- [x] scale projects to one per row on small screen size
 - [ ] animation and fade in to all elements
 - [ ] add line back in expereiences and fix line
 - [ ] add visual transision between sessions
@@ -33,6 +31,7 @@
 - [ ] chose a button style and be consistant, maybe a design system?
 - [ ] move all content to data folder
 - [ ] move feature flags to global section
+- [ ] convert the majority of the v2 components to svelte and tailwind
 
 ## Migration
 - [ ] move all v2 components to main index

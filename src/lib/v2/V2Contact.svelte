@@ -2,6 +2,38 @@
 
 <script>
 	import SocialButton from './SocialButton.svelte';
+	import { animate, inView } from 'motion';
+	import { onMount } from 'svelte';
+	
+	onMount(() => {
+		const stopEmail = inView('#email-button', () => {
+			animate(
+				'#email-button',
+				{ opacity: 1, y: 0 },
+				{ duration: 0.45, delay: 0.2, ease: 'easeOut' },
+			);
+		});
+		const stopGithub = inView('#github-button', () => {
+			animate(
+				'#github-button',
+				{ opacity: 1, y: 0 },
+				{ duration: 0.45, delay: 0.35, ease: 'easeOut' },
+			);
+		});
+		const stopLinkedin = inView('#linkedin-button', () => {
+			animate(
+				'#linkedin-button',
+				{ opacity: 1, y: 0 },
+				{ duration: 0.45, delay: 0.5, ease: 'easeOut' },
+			);
+		});
+
+		return () => {
+			stopEmail?.();
+			stopGithub?.();
+			stopLinkedin?.();
+		};
+	});
 </script>
 
 <section
@@ -28,11 +60,11 @@
 				alexharlan194@gmail.com
 			</div>
 
-			<div class="mt-7 flex justify-center gap-[10px] flex-wrap">
+			<div class="mt-7 flex justify-center gap-[10px] flex-wrap social-buttons">
 				<!-- Email (primary) -->
-				<SocialButton href="mailto:alexharlan194@gmail.com" icon="/media/white-gmail.png" label="Email" />
-				<SocialButton href="https://github.com/alexthegreat194" icon="/media/white-github.png" label="GitHub" />
-				<SocialButton href="https://linkedin.com/in/alexander-harlan" icon="/media/white-linkedin.png" label="LinkedIn" />
+				<SocialButton id="email-button" class="opacity-0 translate-y-2" href="mailto:alexharlan194@gmail.com" icon="/media/white-gmail.png" label="Email" />
+				<SocialButton id="github-button" class="opacity-0 translate-y-2" href="https://github.com/alexthegreat194" icon="/media/white-github.png" label="GitHub" />
+				<SocialButton id="linkedin-button" class="opacity-0 translate-y-2" href="https://linkedin.com/in/alexander-harlan" icon="/media/white-linkedin.png" label="LinkedIn" />
 			</div>
 		</div>
 	</div>
