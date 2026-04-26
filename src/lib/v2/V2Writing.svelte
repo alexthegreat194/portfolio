@@ -48,7 +48,7 @@
 			</div>
 		</div>
 		<a
-			href="/writing"
+			href="/v2/writing"
 			style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #b91c1c; text-decoration: none;"
 			>all posts →</a
 		>

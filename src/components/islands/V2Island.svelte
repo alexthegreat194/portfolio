@@ -9,6 +9,15 @@
 	import V2Experience from '../../lib/v2/V2Experience.svelte';
 	import V2Writing from '../../lib/v2/V2Writing.svelte';
 	import V2Contact from '../../lib/v2/V2Contact.svelte';
+	import { FEATURE_FLAGS } from '../../lib/feature-flags';
+
+	const navLinks = [
+		{ label: 'Work', href: '#work', active: true },
+		{ label: 'About', href: '#about' },
+		{ label: 'Experience', href: '#experience' },
+		...(FEATURE_FLAGS.writing ? [{ label: 'Writing', href: '/v2/writing' }] : []),
+		{ label: 'Contact', href: '#contact' },
+	];
 </script>
 
 <div
@@ -32,14 +41,7 @@
 		style="position: absolute; top: 2800px; left: 120px; width: 280px; height: 280px; border-radius: 50%; background: #a855f7; filter: blur(90px); opacity: 0.14; pointer-events: none; z-index: 0;"
 	></div>
 
-	<V2Nav
-		links={[
-			{ label: 'Work', href: '#work', active: true },
-			{ label: 'About', href: '#about' },
-			{ label: 'Experience', href: '#experience' },
-			{ label: 'Contact', href: '#contact' },
-		]}
-	/>
+	<V2Nav links={navLinks} />
 	<V2Hero />
 	<V2Projects />
 	<V2About />

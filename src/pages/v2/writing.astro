@@ -1,0 +1,502 @@
+---
+import { FEATURE_FLAGS } from '../../lib/feature-flags';
+import V2Layout from '../../layouts/V2Layout.astro';
+import V2Nav from '../../lib/v2/V2Nav.svelte';
+
+if (!FEATURE_FLAGS.writing) {
+	return Astro.redirect('/v2');
+}
+---
+
+<V2Layout title="Writing — Alex Harlan">
+	<style is:global>
+		.v2w-body {
+			background-image:
+				radial-gradient(at 18% 8%, #3a1818 0, #0c0a09 55%),
+				radial-gradient(at 85% 95%, #1a2a3a 0, transparent 60%);
+			background-attachment: fixed;
+			color: #f5f0ea;
+			font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+			min-height: 100vh;
+		}
+		.v2w-body a { color: inherit; text-decoration: none; }
+
+		.v2w-page {
+			max-width: 1100px;
+			margin: 0 auto;
+			padding: 120px var(--v2-page-gutter) 120px;
+		}
+
+		.v2w-crumbs {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 11px;
+			letter-spacing: 2px;
+			text-transform: uppercase;
+			color: rgba(245,240,234,0.62);
+			margin-bottom: 28px;
+		}
+		.v2w-crumbs a { color: rgba(245,240,234,0.62); }
+		.v2w-crumbs a:hover { color: #f5f0ea; }
+		.v2w-crumbs .v2w-sep { color: rgba(245,240,234,0.42); }
+		.v2w-crumbs .v2w-here { color: #b91c1c; font-weight: 700; }
+
+		.v2w-title {
+			font-size: 72px;
+			font-weight: 700;
+			letter-spacing: -2.5px;
+			line-height: 1;
+			margin: 0 0 14px;
+		}
+		.v2w-dot { color: #b91c1c; }
+		.v2w-sub {
+			font-size: 18px;
+			color: rgba(245,240,234,0.62);
+			font-weight: 300;
+			max-width: 620px;
+			margin: 0 0 56px;
+		}
+
+		.v2w-layout {
+			display: grid;
+			grid-template-columns: 260px 1fr;
+			gap: 64px;
+			align-items: start;
+		}
+
+		/* Sidebar */
+		.v2w-side-head {
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 10px;
+			letter-spacing: 2px;
+			text-transform: uppercase;
+			color: rgba(245,240,234,0.42);
+			margin: 0 0 12px;
+		}
+		.v2w-side-block { margin-bottom: 32px; }
+
+		.v2w-tag-list { display: flex; flex-direction: column; gap: 2px; }
+		.v2w-tag-list button {
+			all: unset;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 8px 12px;
+			border-radius: 8px;
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 12px;
+			color: rgba(245,240,234,0.62);
+			text-transform: capitalize;
+			border: 1px solid transparent;
+			transition: background .15s, color .15s, border-color .15s;
+		}
+		.v2w-tag-list button:hover { color: #f5f0ea; background: rgba(255,255,255,0.03); }
+		.v2w-tag-list button.active {
+			color: #f5f0ea;
+			background: rgba(185,28,28,0.15);
+			border-color: #b91c1c;
+		}
+		.v2w-count {
+			font-size: 10px;
+			color: rgba(245,240,234,0.42);
+			background: rgba(255,255,255,0.06);
+			padding: 1px 7px;
+			border-radius: 999px;
+		}
+		.v2w-tag-list button.active .v2w-count {
+			background: rgba(0,0,0,0.25);
+			color: #f5f0ea;
+		}
+
+		.v2w-index-meta {
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 11px;
+			color: rgba(245,240,234,0.62);
+			line-height: 1.85;
+		}
+		.v2w-index-meta .k {
+			color: rgba(245,240,234,0.42);
+			display: inline-block;
+			min-width: 56px;
+		}
+
+		.v2w-socials { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+		.v2w-chip {
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 11px;
+			letter-spacing: 0.4px;
+			padding: 7px 12px;
+			border-radius: 999px;
+			border: 1px solid #3a352f;
+			color: rgba(245,240,234,0.62);
+			transition: color .2s, border-color .2s;
+		}
+		.v2w-chip:hover { color: #f5f0ea; border-color: #b91c1c; }
+		.v2w-rss {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 11px;
+			color: #b91c1c;
+			padding: 7px 12px;
+			border-radius: 999px;
+			border: 1px solid #b91c1c;
+			background: rgba(185,28,28,0.08);
+			transition: background .2s;
+		}
+		.v2w-rss:hover { background: rgba(185,28,28,0.16); }
+
+		/* Article list */
+		.v2w-list-card {
+			background: #1a1714;
+			border: 1px solid #2c2823;
+			border-radius: 14px;
+			box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+			padding: 6px;
+		}
+		.v2w-row {
+			display: grid;
+			grid-template-columns: 130px 1fr 90px;
+			gap: 24px;
+			padding: 24px 22px;
+			align-items: start;
+			border-top: 1px solid #2c2823;
+			cursor: pointer;
+			transition: background .15s;
+			border-radius: 10px;
+			text-decoration: none;
+			color: inherit;
+		}
+		.v2w-row:first-child { border-top: none; }
+		.v2w-row:hover { background: rgba(255,255,255,0.015); }
+
+		.v2w-row .v2w-date {
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 11px;
+			color: rgba(245,240,234,0.62);
+			letter-spacing: 1px;
+			padding-top: 4px;
+		}
+		.v2w-row .v2w-body .v2w-title-row {
+			display: flex;
+			align-items: baseline;
+			gap: 10px;
+			flex-wrap: wrap;
+		}
+		.v2w-row .v2w-body .v2w-t {
+			font-size: 20px;
+			font-weight: 600;
+			letter-spacing: -0.3px;
+			color: #f5f0ea;
+		}
+		.v2w-row:hover .v2w-body .v2w-t { color: #dc2626; }
+		.v2w-row .v2w-body .v2w-featured {
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 9px;
+			letter-spacing: 1px;
+			color: #b91c1c;
+			border: 1px solid #b91c1c;
+			border-radius: 4px;
+			padding: 1px 6px;
+			text-transform: uppercase;
+		}
+		.v2w-row .v2w-body .v2w-x {
+			font-size: 14px;
+			color: rgba(245,240,234,0.62);
+			margin-top: 6px;
+			line-height: 1.6;
+			max-width: 620px;
+		}
+		.v2w-row .v2w-body .v2w-tags {
+			display: flex;
+			gap: 6px;
+			flex-wrap: wrap;
+			margin-top: 12px;
+		}
+		.v2w-row .v2w-body .v2w-tag {
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 10px;
+			letter-spacing: 0.4px;
+			color: rgba(245,240,234,0.62);
+			padding: 2px 8px;
+			border-radius: 6px;
+			background: #141210;
+			border: 1px solid #2c2823;
+		}
+		.v2w-row .v2w-m {
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 11px;
+			color: rgba(245,240,234,0.62);
+			text-align: right;
+			padding-top: 4px;
+		}
+		.v2w-row:hover .v2w-m { color: #b91c1c; }
+
+		.v2w-empty {
+			padding: 32px 22px;
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 12px;
+			color: rgba(245,240,234,0.42);
+			text-align: center;
+		}
+
+		.v2w-list-foot {
+			margin-top: 18px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 11px;
+			color: rgba(245,240,234,0.42);
+		}
+		.v2w-list-foot .v2w-count-now { color: rgba(245,240,234,0.62); }
+
+		.v2w-backwrap {
+			margin-top: 80px;
+			padding-top: 32px;
+			border-top: 1px solid #2c2823;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
+			gap: 16px;
+		}
+		.v2w-back {
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 12px;
+			letter-spacing: 1.5px;
+			text-transform: uppercase;
+			color: #b91c1c;
+			font-weight: 600;
+			padding: 10px 16px;
+			border-radius: 999px;
+			border: 1px solid #b91c1c;
+			background: rgba(185,28,28,0.08);
+			transition: background .2s;
+		}
+		.v2w-back:hover { background: rgba(185,28,28,0.16); }
+		.v2w-foot {
+			font-family: 'JetBrains Mono', monospace;
+			font-size: 11px;
+			color: rgba(245,240,234,0.38);
+		}
+
+		@media (max-width: 820px) {
+			.v2w-page { padding: 110px 24px 80px; }
+			.v2w-title { font-size: 48px; letter-spacing: -1.5px; }
+			.v2w-layout { grid-template-columns: 1fr; gap: 36px; }
+			.v2w-row { grid-template-columns: 1fr; gap: 6px; padding: 20px 16px; }
+			.v2w-row .v2w-m { text-align: left; padding-top: 0; }
+		}
+	</style>
+
+	<div class="v2w-body">
+		<V2Nav
+			links={[
+				{ label: 'Work', href: '/v2' },
+				{ label: 'About', href: '/v2/about' },
+				{ label: 'Writing', href: '/v2/writing', active: true },
+				{ label: 'Contact', href: '/v2#contact' },
+			]}
+		/>
+
+		<main class="v2w-page">
+			<div class="v2w-crumbs">
+				<a href="/v2">Home</a>
+				<span class="v2w-sep">/</span>
+				<span class="v2w-here">Writing</span>
+			</div>
+
+			<h1 class="v2w-title">Writing<span class="v2w-dot">.</span></h1>
+			<p class="v2w-sub">Notes, essays, and the occasional war story. Whatever I feel like writing about.</p>
+
+			<div class="v2w-layout">
+				<aside>
+					<div class="v2w-side-block">
+						<div class="v2w-side-head">Filter by tag</div>
+						<div class="v2w-tag-list" id="tagList"></div>
+					</div>
+
+					<div class="v2w-side-block">
+						<div class="v2w-side-head">Index</div>
+						<div class="v2w-index-meta" id="indexMeta"></div>
+					</div>
+
+					<div class="v2w-side-block">
+						<div class="v2w-side-head">Follow</div>
+						<div class="v2w-socials">
+							<a class="v2w-rss" href="#">
+								<span style="font-size:10px">◉</span> RSS feed
+							</a>
+						</div>
+						<div class="v2w-socials" style="margin-top:8px;">
+							<a class="v2w-chip" href="https://github.com/alexthegreat194" target="_blank">GitHub</a>
+							<a class="v2w-chip" href="https://linkedin.com/in/alexander-harlan" target="_blank">LinkedIn</a>
+						</div>
+					</div>
+				</aside>
+
+				<section>
+					<div class="v2w-list-card" id="list"></div>
+					<div class="v2w-list-foot">
+						<span><span class="v2w-count-now" id="countNow">0</span> of <span id="countTotal">0</span> entries</span>
+						<span>sorted · newest first</span>
+					</div>
+				</section>
+			</div>
+
+			<div class="v2w-backwrap">
+				<a href="/v2" class="v2w-back">
+					<span style="font-size:14px">←</span>
+					Back to work
+				</a>
+				<div class="v2w-foot">© 2026 Alex Harlan · built with Astro + Svelte</div>
+			</div>
+		</main>
+	</div>
+
+	<script>
+		const POSTS = [
+			{
+				slug: 'captcha-is-the-feature',
+				d: 'Apr 12, 2026',
+				sort: 20260412,
+				t: 'The captcha is the feature',
+				x: 'On making contact forms that are weirder than they need to be — and why friction can be the design.',
+				m: '3 min',
+				tags: ['design', 'notes'],
+				featured: true,
+			},
+			{
+				slug: 'svelte-vs-react-2y',
+				d: 'Jan 28, 2026',
+				sort: 20260128,
+				t: 'Svelte vs React, 2 years in',
+				x: "Honest notes from shipping real projects in both. Where each earned its keep, and where I'd switch again tomorrow.",
+				m: '6 min',
+				tags: ['engineering', 'frontend'],
+				featured: false,
+			},
+			{
+				slug: 'small-projects',
+				d: 'Sep 03, 2025',
+				sort: 20250903,
+				t: 'On keeping projects small',
+				x: 'Scope, scope, scope. A short argument for finishing things.',
+				m: '4 min',
+				tags: ['notes'],
+				featured: false,
+			},
+			{
+				slug: 'mongo-tx-war-stories',
+				d: 'Jun 17, 2025',
+				sort: 20250617,
+				t: 'Mongo transactions: three war stories',
+				x: "What we shipped, what broke, what we'd never do again. A postmortem in three parts.",
+				m: '9 min',
+				tags: ['engineering', 'backend'],
+				featured: false,
+			},
+			{
+				slug: 'weekend-go',
+				d: 'Mar 09, 2025',
+				sort: 20250309,
+				t: 'A weekend with Go',
+				x: 'Building a single-binary video gallery — and why that constraint made everything else easier.',
+				m: '5 min',
+				tags: ['engineering', 'go'],
+				featured: false,
+			},
+			{
+				slug: 'portfolio-v6',
+				d: 'Dec 01, 2024',
+				sort: 20241201,
+				t: 'Redesigning this site, again',
+				x: 'Glass chrome, solid content, a very red accent. Notes from the sixth iteration.',
+				m: '4 min',
+				tags: ['design', 'notes'],
+				featured: false,
+			},
+		];
+
+		const ALL_TAGS = (() => {
+			const seen = new Set<string>();
+			const out: string[] = [];
+			POSTS.forEach(p => p.tags.forEach(t => { if (!seen.has(t)) { seen.add(t); out.push(t); } }));
+			return out;
+		})();
+
+		const counts: Record<string, number> = { all: POSTS.length };
+		ALL_TAGS.forEach(t => { counts[t] = POSTS.filter(p => p.tags.includes(t)).length; });
+
+		const SORTED = [...POSTS].sort((a, b) => b.sort - a.sort);
+
+		const tagList = document.getElementById('tagList')!;
+		const indexMeta = document.getElementById('indexMeta')!;
+		const list = document.getElementById('list')!;
+		const countNow = document.getElementById('countNow')!;
+		const countTotal = document.getElementById('countTotal')!;
+
+		countTotal.textContent = String(POSTS.length);
+
+		let activeTag = 'all';
+
+		function renderTags() {
+			tagList.innerHTML = '';
+			const items: [string, string][] = [['all', 'All'], ...ALL_TAGS.map(t => [t, t] as [string, string])];
+			items.forEach(([key, label]) => {
+				const btn = document.createElement('button');
+				if (activeTag === key) btn.classList.add('active');
+				btn.innerHTML = `<span>${label}</span><span class="v2w-count">${counts[key]}</span>`;
+				btn.addEventListener('click', () => { activeTag = key; renderTags(); renderList(); });
+				tagList.appendChild(btn);
+			});
+		}
+
+		function renderIndex() {
+			const years: Record<string, number> = {};
+			SORTED.forEach(p => {
+				const y = String(p.sort).slice(0, 4);
+				years[y] = (years[y] || 0) + 1;
+			});
+			indexMeta.innerHTML = Object.entries(years)
+				.sort((a, b) => b[0].localeCompare(a[0]))
+				.map(([y, n]) => `<div><span class="k">${y}</span> ${n} ${n === 1 ? 'piece' : 'pieces'}</div>`)
+				.join('');
+		}
+
+		function renderList() {
+			const shown = activeTag === 'all' ? SORTED : SORTED.filter(p => p.tags.includes(activeTag));
+			countNow.textContent = String(shown.length);
+			if (shown.length === 0) {
+				list.innerHTML = '<div class="v2w-empty">Nothing under this tag yet.</div>';
+				return;
+			}
+			list.innerHTML = shown.map(p => `
+				<a class="v2w-row" href="#${p.slug}">
+					<div class="v2w-date">${p.d}</div>
+					<div class="v2w-body">
+						<div class="v2w-title-row">
+							<div class="v2w-t">${p.t}</div>
+							${p.featured ? '<span class="v2w-featured">Featured</span>' : ''}
+						</div>
+						<div class="v2w-x">${p.x}</div>
+						<div class="v2w-tags">${p.tags.map(t => `<span class="v2w-tag">${t}</span>`).join('')}</div>
+					</div>
+					<div class="v2w-m">${p.m} →</div>
+				</a>
+			`).join('');
+		}
+
+		renderTags();
+		renderIndex();
+		renderList();
+	</script>
+</V2Layout>

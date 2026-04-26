@@ -18,7 +18,12 @@
 - [x] writing section needs to be added behind a feature flag
 - [x] move old icons to new stuff
 - [ ] animation and fade in to all elements
-- [ ] design system form button and filters, anything repeated 
 - [ ] add line back in expereiences and fix line
 
-- [ ] Projects section
+- [ ] fix what i do section animations
+- [ ] add marketing text to about me section
+- [ ] import design for blog sections 
+- [ ] fix contact section reactity to buttons 
+- [ ] scale projects to one per row on small screen size
+
+- [ ] Fix Writing sections 

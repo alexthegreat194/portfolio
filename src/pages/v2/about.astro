@@ -2,8 +2,16 @@
 import V2Layout from '../../layouts/V2Layout.astro';
 import V2Nav from '../../lib/v2/V2Nav.svelte';
 import V2PageHeader from '../../lib/v2/V2PageHeader.svelte';
+import { FEATURE_FLAGS } from '../../lib/feature-flags';
 
 const profile = '/media/profile-final.jpg';
+
+const navLinks = [
+	{ label: 'Work', href: '/v2' },
+	{ label: 'About', href: '/v2/about', active: true },
+	...(FEATURE_FLAGS.writing ? [{ label: 'Writing', href: '/v2/writing' }] : []),
+	{ label: 'Contact', href: '/v2#contact' },
+];
 ---
 
 <V2Layout title="About — Alex Harlan">
@@ -128,14 +136,7 @@ const profile = '/media/profile-final.jpg';
 	</style>
 
 	<div class="v2-about-body">
-		<V2Nav
-			links={[
-				{ label: 'Work', href: '/v2' },
-				{ label: 'About', href: '/v2/about', active: true },
-				{ label: 'Writing', href: '/v2#writing' },
-				{ label: 'Contact', href: '/v2#contact' },
-			]}
-		/>
+		<V2Nav links={navLinks} />
 
 		<main class="v2-page">
 			<!-- Breadcrumbs -->
