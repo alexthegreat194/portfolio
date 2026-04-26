@@ -13,7 +13,7 @@
 
 	const navLinks = [
 		{ label: 'Work', href: '#work', active: true },
-		{ label: 'About', href: '#about' },
+		...(FEATURE_FLAGS.about ? [{ label: 'About', href: '#about' }] : []),
 		{ label: 'Experience', href: '#experience' },
 		...(FEATURE_FLAGS.writing ? [{ label: 'Writing', href: '/v2/writing' }] : []),
 		{ label: 'Contact', href: '#contact' },
@@ -44,7 +44,9 @@
 	<V2Nav links={navLinks} />
 	<V2Hero />
 	<V2Projects />
-	<V2About />
+	{#if FEATURE_FLAGS.about}
+		<V2About />
+	{/if}
 	<V2Skills />
 	<V2Experience />
 	<V2Writing />

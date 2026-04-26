@@ -4,6 +4,10 @@ import V2Nav from '../../lib/v2/V2Nav.svelte';
 import V2PageHeader from '../../lib/v2/V2PageHeader.svelte';
 import { FEATURE_FLAGS } from '../../lib/feature-flags';
 
+if (!FEATURE_FLAGS.about) {
+	return Astro.redirect('/v2');
+}
+
 const profile = '/media/profile-final.jpg';
 
 const navLinks = [

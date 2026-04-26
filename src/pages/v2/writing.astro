@@ -301,7 +301,7 @@ if (!FEATURE_FLAGS.writing) {
 		<V2Nav
 			links={[
 				{ label: 'Work', href: '/v2' },
-				{ label: 'About', href: '/v2/about' },
+				...(FEATURE_FLAGS.about ? [{ label: 'About', href: '/v2/about' }] : []),
 				{ label: 'Writing', href: '/v2/writing', active: true },
 				{ label: 'Contact', href: '/v2#contact' },
 			]}
