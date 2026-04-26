@@ -25,39 +25,30 @@
 	);
 </script>
 
-<section id="experience" style="padding:  var(--v2-section-y) var(--v2-page-gutter) var(--v2-section-y);">
+<section
+	id="experience"
+	class="px-[var(--v2-page-gutter)] py-[var(--v2-section-y)]"
+>
 	<!-- Section header -->
-	<div
-		style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; flex-wrap: wrap; gap: 16px;"
-	>
+	<div class="flex justify-between items-end mb-7 flex-wrap gap-4">
 		<div>
-			<div
-				style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,234,0.62); display: flex; align-items: center; gap: 10px;"
-			>
-				<span style="color: #b91c1c; font-weight: 700;">03</span>
-				<span style="width: 18px; height: 1px; background: #3a352f; display: inline-block;"></span>
+			<div class="font-mono text-[11px] tracking-[2px] uppercase text-[rgba(245,240,234,0.62)] flex items-center gap-[10px]">
+				<span class="text-[#b91c1c] font-bold">03</span>
+				<span class="inline-block w-[18px] h-px bg-[#3a352f]"></span>
 				Experience
 			</div>
-			<div
-				style="font-size: 40px; font-weight: 700; letter-spacing: -1.2px; margin-top: 10px; line-height: 1.14; padding-top: 0.04em;"
-			>
-				Work & projects, on one line.
+			<div class="text-[40px] font-bold -tracking-[1.2px] mt-[10px] leading-[1.14] pt-[0.04em]">
+				Work & Projects
 			</div>
 		</div>
 		<!-- Legend -->
-		<div
-			style="display: flex; align-items: center; gap: 18px; font-family: 'Inter', system-ui, sans-serif; font-size: 12px; color: rgba(245,240,234,0.62);"
-		>
-			<div style="display: flex; align-items: center; gap: 8px;">
-				<span
-					style="width: 10px; height: 10px; border-radius: 50%; background: #b91c1c; display: inline-block;"
-				></span>
+		<div class="flex items-center gap-[18px] font-sans text-[12px] text-[rgba(245,240,234,0.62)]">
+			<div class="flex items-center gap-2">
+				<span class="inline-block w-[10px] h-[10px] rounded-full bg-[#b91c1c]"></span>
 				Professional
 			</div>
-			<div style="display: flex; align-items: center; gap: 8px;">
-				<span
-					style="width: 10px; height: 10px; border-radius: 50%; background: transparent; border: 2px solid #b91c1c; display: inline-block; box-sizing: border-box;"
-				></span>
+			<div class="flex items-center gap-2">
+				<span class="inline-block w-[10px] h-[10px] rounded-full border-2 border-[#b91c1c] bg-transparent box-border"></span>
 				Side project / freelance
 			</div>
 		</div>
@@ -67,73 +58,54 @@
 
 	<!-- Timeline -->
 	<div
-		style="background: #1a1714; border: 1px solid #2c2823; border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.35); padding: var(--v2-card-pad-lg); position: relative;"
+		class="flex flex-col gap-[18px] bg-[#1a1714] border border-[#2c2823] rounded-[14px] shadow-[0_8px_24px_rgba(0,0,0,0.35)] p-[var(--v2-card-pad-lg)] relative"
 	>
 		<!-- Vertical line -->
-		<!-- <div
-			style="position: absolute; left: 193px; top: var(--v2-card-pad-lg); bottom: var(--v2-card-pad-lg); width: 1px; background: #3a352f;"
-		></div> -->
+		<!-- <div class="absolute left-[193px] top-[var(--v2-card-pad-lg)] bottom-[var(--v2-card-pad-lg)] w-px bg-[#3a352f]"></div> -->
 
 		{#each items as it, i}
 			<div
-				style="display: grid; grid-template-columns: 150px 20px 1fr; gap: 18px; padding-bottom: {i === items.length - 1 ? 0 : 26}px; align-items: flex-start;"
+				class="grid grid-cols-[100px_20px_1fr]  lg:grid-cols-[150px_20px_1fr] gap-[18px] pb-[{i === items.length - 1 ? 0 : 26}px] items-start"
 			>
 				<!-- Date + kind -->
-				<div style="padding-top: 2px;">
+				<div class="pt-[2px]">
 					<div
-						style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {it.category === 'work'
-							? '#b91c1c'
-							: 'rgba(245,240,234,0.62)'}; letter-spacing: 0.8px;"
+						class="font-mono text-[11px] tracking-[.8px]"
+						style="color: {it.category === 'work' ? '#b91c1c' : 'rgba(245,240,234,0.62)'}"
 					>
 						{it.dateRange}
 					</div>
-					<div
-						style="margin-top: 6px; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: rgba(245,240,234,0.38); letter-spacing: 1.5px; text-transform: uppercase;"
-					>
+					<div class="mt-[6px] font-mono text-[9px] text-[rgba(245,240,234,0.38)] tracking-[1.5px] uppercase">
 						{it.category === 'work' ? 'Professional' : 'Side · freelance'}
 					</div>
 				</div>
 
 				<!-- Dot -->
-				<div
-					style="position: relative; display: flex; justify-content: center; padding-top: 4px;"
-				>
+				<div class="relative flex justify-center pt-1">
 					{#if it.category === 'work'}
-						<div
-							style="width: 12px; height: 12px; border-radius: 50%; background: #b91c1c; box-shadow: 0 0 0 4px #141210, 0 0 0 5px #3a352f; flex-shrink: 0;"
-						></div>
+						<div class="w-[12px] h-[12px] rounded-full bg-[#b91c1c] shadow-[0_0_0_4px_#141210,0_0_0_5px_#3a352f] flex-shrink-0"></div>
 					{:else}
-						<div
-							style="width: 12px; height: 12px; border-radius: 50%; background: #1a1714; border: 2px solid #b91c1c; box-shadow: 0 0 0 4px #141210, 0 0 0 5px #3a352f; box-sizing: border-box; flex-shrink: 0;"
-						></div>
+						<div class="w-[12px] h-[12px] rounded-full bg-[#1a1714] border-2 border-[#b91c1c] shadow-[0_0_0_4px_#141210,0_0_0_5px_#3a352f] box-border flex-shrink-0"></div>
 					{/if}
 				</div>
 
 				<!-- Content -->
 				<div>
-					<div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;">
-						<div style="font-size: 18px; font-weight: 700; letter-spacing: -0.3px;">{it.organization}</div>
-						<div
-							style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(245,240,234,0.38);"
-						>
-							{it.context}
-						</div>
+					<div class="flex items-baseline gap-[10px] flex-wrap">
+						<div class="text-[18px] font-bold -tracking-[0.3px]">{it.organization}</div>
+						<div class="font-mono text-[11px] text-[rgba(245,240,234,0.38)]">{it.context}</div>
 					</div>
-					<div
-						style="font-size: 13px; color: rgba(245,240,234,0.62); margin-top: 2px; font-weight: 500;"
-					>
+					<div class="text-[13px] text-[rgba(245,240,234,0.62)] mt-[2px] font-medium">
 						{it.role}
 					</div>
-					<div
-						style="font-size: 13px; color: rgba(245,240,234,0.62); margin-top: 8px; line-height: 1.55; max-width: 620px;"
-					>
+					<div class="text-[13px] text-[rgba(245,240,234,0.62)] mt-2 leading-[1.55] max-w-[620px]">
 						{it.description}
 					</div>
 					{#if it.tags}
-						<div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;">
+						<div class="flex gap-[6px] flex-wrap mt-[10px]">
 							{#each it.tags as t}
 								<span
-									style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.4px; color: rgba(245,240,234,0.62); padding: 3px 8px; border-radius: 6px; background: #141210; border: 1px solid #2c2823;"
+									class="font-mono text-[10px] tracking-[0.4px] text-[rgba(245,240,234,0.62)] px-2 py-[3px] rounded-[6px] bg-[#141210] border border-[#2c2823]"
 								>{t}</span>
 							{/each}
 						</div>
@@ -143,9 +115,7 @@
 		{/each}
 
 		{#if items.length === 0}
-			<div
-				style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: rgba(245,240,234,0.38); padding: 12px;"
-			>
+			<div class="font-mono text-[12px] text-[rgba(245,240,234,0.38)] p-3">
 				Nothing in this view.
 			</div>
 		{/if}
