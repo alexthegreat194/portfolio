@@ -10,7 +10,7 @@
 - [x] add app padding
 - [x] remove filter from deseign in selected work and add same filters as expereience section
 - [x] wework homepage text
-- [ ] design writing section
+- [x] design writing section
 - [x] make projects collection
 - [x] timeline collection
 - [x] experience header padding fix
@@ -27,3 +27,7 @@
 - [ ] scale projects to one per row on small screen size
 
 - [ ] Fix Writing sections 
+
+## Admin:
+- [ ] toggleable feature flags for features
+- [ ] v2 flag

@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import { FEATURE_FLAGS } from '../../lib/feature-flags';
 import V2Layout from '../../layouts/V2Layout.astro';
 import V2Nav from '../../lib/v2/V2Nav.svelte';
@@ -6,6 +7,20 @@ import V2Nav from '../../lib/v2/V2Nav.svelte';
 if (!FEATURE_FLAGS.writing) {
 	return Astro.redirect('/v2');
 }
+
+const allPosts = await getCollection('writing');
+const postsData = allPosts
+	.map(p => ({
+		slug: p.id,
+		d: p.data.date.toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' }),
+		sort: Number(p.data.date.toISOString().slice(0, 10).replace(/-/g, '')),
+		t: p.data.title,
+		x: p.data.dek,
+		m: p.data.readTime,
+		tags: p.data.tags,
+		featured: p.data.featured,
+	}))
+	.sort((a, b) => b.sort - a.sort);
 ---
 
 <V2Layout title="Writing — Alex Harlan">
@@ -362,87 +377,26 @@ if (!FEATURE_FLAGS.writing) {
 		</main>
 	</div>
 
-	<script>
-		const POSTS = [
-			{
-				slug: 'captcha-is-the-feature',
-				d: 'Apr 12, 2026',
-				sort: 20260412,
-				t: 'The captcha is the feature',
-				x: 'On making contact forms that are weirder than they need to be — and why friction can be the design.',
-				m: '3 min',
-				tags: ['design', 'notes'],
-				featured: true,
-			},
-			{
-				slug: 'svelte-vs-react-2y',
-				d: 'Jan 28, 2026',
-				sort: 20260128,
-				t: 'Svelte vs React, 2 years in',
-				x: "Honest notes from shipping real projects in both. Where each earned its keep, and where I'd switch again tomorrow.",
-				m: '6 min',
-				tags: ['engineering', 'frontend'],
-				featured: false,
-			},
-			{
-				slug: 'small-projects',
-				d: 'Sep 03, 2025',
-				sort: 20250903,
-				t: 'On keeping projects small',
-				x: 'Scope, scope, scope. A short argument for finishing things.',
-				m: '4 min',
-				tags: ['notes'],
-				featured: false,
-			},
-			{
-				slug: 'mongo-tx-war-stories',
-				d: 'Jun 17, 2025',
-				sort: 20250617,
-				t: 'Mongo transactions: three war stories',
-				x: "What we shipped, what broke, what we'd never do again. A postmortem in three parts.",
-				m: '9 min',
-				tags: ['engineering', 'backend'],
-				featured: false,
-			},
-			{
-				slug: 'weekend-go',
-				d: 'Mar 09, 2025',
-				sort: 20250309,
-				t: 'A weekend with Go',
-				x: 'Building a single-binary video gallery — and why that constraint made everything else easier.',
-				m: '5 min',
-				tags: ['engineering', 'go'],
-				featured: false,
-			},
-			{
-				slug: 'portfolio-v6',
-				d: 'Dec 01, 2024',
-				sort: 20241201,
-				t: 'Redesigning this site, again',
-				x: 'Glass chrome, solid content, a very red accent. Notes from the sixth iteration.',
-				m: '4 min',
-				tags: ['design', 'notes'],
-				featured: false,
-			},
-		];
+	<script define:vars={{ postsData }}>
+		const POSTS = postsData;
 
 		const ALL_TAGS = (() => {
-			const seen = new Set<string>();
-			const out: string[] = [];
+			const seen = new Set();
+			const out = [];
 			POSTS.forEach(p => p.tags.forEach(t => { if (!seen.has(t)) { seen.add(t); out.push(t); } }));
 			return out;
 		})();
 
-		const counts: Record<string, number> = { all: POSTS.length };
+		const counts = { all: POSTS.length };
 		ALL_TAGS.forEach(t => { counts[t] = POSTS.filter(p => p.tags.includes(t)).length; });
 
 		const SORTED = [...POSTS].sort((a, b) => b.sort - a.sort);
 
-		const tagList = document.getElementById('tagList')!;
-		const indexMeta = document.getElementById('indexMeta')!;
-		const list = document.getElementById('list')!;
-		const countNow = document.getElementById('countNow')!;
-		const countTotal = document.getElementById('countTotal')!;
+		const tagList = document.getElementById('tagList');
+		const indexMeta = document.getElementById('indexMeta');
+		const list = document.getElementById('list');
+		const countNow = document.getElementById('countNow');
+		const countTotal = document.getElementById('countTotal');
 
 		countTotal.textContent = String(POSTS.length);
 
@@ -450,7 +404,7 @@ if (!FEATURE_FLAGS.writing) {
 
 		function renderTags() {
 			tagList.innerHTML = '';
-			const items: [string, string][] = [['all', 'All'], ...ALL_TAGS.map(t => [t, t] as [string, string])];
+			const items = [['all', 'All'], ...ALL_TAGS.map(t => [t, t])];
 			items.forEach(([key, label]) => {
 				const btn = document.createElement('button');
 				if (activeTag === key) btn.classList.add('active');
@@ -461,7 +415,7 @@ if (!FEATURE_FLAGS.writing) {
 		}
 
 		function renderIndex() {
-			const years: Record<string, number> = {};
+			const years = {};
 			SORTED.forEach(p => {
 				const y = String(p.sort).slice(0, 4);
 				years[y] = (years[y] || 0) + 1;
@@ -480,7 +434,7 @@ if (!FEATURE_FLAGS.writing) {
 				return;
 			}
 			list.innerHTML = shown.map(p => `
-				<a class="v2w-row" href="#${p.slug}">
+				<a class="v2w-row" href="/v2/writing/${p.slug}">
 					<div class="v2w-date">${p.d}</div>
 					<div class="v2w-body">
 						<div class="v2w-title-row">
