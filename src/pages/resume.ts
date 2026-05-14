@@ -1,25 +1,8 @@
-import { readFile } from 'node:fs/promises';
+import type { APIRoute } from 'astro';
 
-const resumePath = new URL(
-	'../../public/resumes/Alex_Harlan_-_Resume_1.3.pdf',
-	import.meta.url
-);
+const resumes = ['Alex_Harlan_-_Resume_1.3.pdf'];
 
-const headers = {
-	'Content-Type': 'application/pdf',
-	'Content-Disposition': 'inline; filename="Alex_Harlan_-_Resume_1.3.pdf"',
+export const GET: APIRoute = async ({ request }) => {
+	const target = new URL(`/resumes/${resumes[0]}`, new URL(request.url).origin);
+	return Response.redirect(target.href, 302);
 };
-
-export async function GET() {
-	const pdf = await readFile(resumePath);
-
-	return new Response(pdf, {
-		headers,
-	});
-}
-
-export function HEAD() {
-	return new Response(null, {
-		headers,
-	});
-}
